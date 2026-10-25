@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>御社専属AI参謀｜お試し構築キット</title>
+<style>
+:root{--ink:#142540;--muted:#566173;--gold:#94733b;--line:#dfe3e8;--paper:#f5f4f0}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font-size:16px;font-family:"Yu Gothic",Meiryo,sans-serif;line-height:1.85}header{padding:18px 24px;border-bottom:1px solid var(--line);background:white}header a{color:var(--ink);text-decoration:none;font-weight:700}header>div,main,footer{max-width:960px;margin:auto}main{padding:52px 24px}h1,h2{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;line-height:1.5}h1{font-size:clamp(32px,6vw,58px);margin:16px 0 22px}h2{font-size:clamp(24px,3.8vw,32px);margin:12px 0 18px}h3{font-size:18px;line-height:1.6}p{margin:12px 0}a{color:#284d7d;text-underline-offset:4px}.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--gold);font-weight:700}.lead{font-size:18px;max-width:740px;color:var(--muted)}.card{background:white;border:1px solid var(--line);padding:30px;margin:24px 0;border-radius:16px;scroll-margin-top:20px}.note{background:#f8f5ed;border-left:3px solid var(--gold);padding:14px 18px;font-size:14px}.small{font-size:13px;color:var(--muted)}.step{font-size:13px;font-weight:700;color:var(--gold)}nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:28px 0}nav a{display:block;padding:13px 16px;background:white;border:1px solid var(--line);border-radius:8px;text-decoration:none;color:var(--ink);font-size:14px}.flow{padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-weight:700}.goal{color:var(--muted);font-size:15px}details{border-top:1px solid var(--line);margin-top:20px;padding-top:16px}summary{font-weight:700;cursor:pointer;padding:5px 0}pre{font:14px/1.85 "Yu Gothic",Meiryo,sans-serif;white-space:pre-wrap;overflow-wrap:anywhere;background:#f5f6f8;padding:20px;border-radius:8px;margin-bottom:12px}button,.button{font:inherit;display:inline-block;padding:11px 18px;border-radius:7px;border:0;background:var(--ink);color:white;text-decoration:none;cursor:pointer}.copyrow{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.status{font-size:13px;color:var(--gold);min-height:1.8em}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #bb944d;outline-offset:4px}ul,ol{padding-left:1.5em}.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.example{border:1px solid var(--line);padding:18px;border-radius:8px}.example h3{margin-top:0}.navy{background:var(--ink);color:white}.navy .eyebrow,.navy .small{color:#dfcba4}.navy .button{background:#fff;color:var(--ink)}footer{padding:12px 24px 40px;font-size:13px;color:var(--muted)}@media(max-width:600px){main{padding:32px 16px}.card{padding:24px 18px}nav,.compare-grid{grid-template-columns:1fr}pre{padding:16px;font-size:14px}.lead{font-size:16px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{nav,button,.status{display:none}details>*{display:block!important}.card{break-inside:avoid}body{background:white}}
+</style></head><body><header><div><a href="../">自社専門AI <span aria-hidden="true">｜</span> 桂</a></div></header><main>
+<span class="eyebrow">OFFICIAL LINE GIFT · 7 DAYS</span><h1>御社の事情を知る、<br>AI参謀を作ってみる。</h1><p class="lead">現在地、目標、商品、判断基準。<br>事業の背景を伝えると、AIの答えはどう変わるでしょうか。<br>御社の仕事ひとつで、その違いを確かめる体験キットです。</p>
+<p class="flow">聞き取る → 事業の説明書を作る → 起動する → 比べる → 仕事で試す</p>
+<section class="card"><h2>最初に、このページを保存。</h2><p>教材はすべて今日から使えます。公式LINEでは1週間、順番に取り組み方をご案内します。初日は①〜③で準備し、その後は必要なところから進めてください。</p><ol><li>お使いのChatGPTやClaudeなど、文章で相談できるAIを開く。</li><li>各教材の「指示書を開く」からコピーし、AIのチャットへ貼る。</li><li>出力を確かめ、仕事に使う前に人が修正する。</li></ol><p class="note">このページ自体はAIを動かしません。入力フォーム・外部送信・回答の保存機能はありません。AIへ渡す情報は所属先のルールと利用サービスのデータ設定を確認し、個人情報や秘密情報を除いてください。無料体験の情報は、あなたが入力した時点のものです。</p></section>
+<nav aria-label="教材一覧"><a href="#interview">① 事業理解インタビュー</a><a href="#context">② 御社専用コンテキストシート</a><a href="#boot">③ AI参謀の起動指示書</a><a href="#compare">④ あり・なし比較と完成見本</a><a href="#work">⑤ 最初の仕事を進める</a><a href="#choose">⑥ 任せる業務を選び、測る</a><a href="#handoff">⑦ 社員に渡す実行手順</a><a href="#update">情報が変わったら</a></nav>
+<section class="card" id="interview"><span class="step">01 · まずは会話で</span><h2>事業理解インタビュー</h2><p>白紙のシートを埋める前に、AIに聞き役になってもらいます。「まだ決めていない」という回答でも進められます。</p><p class="goal"><strong>入力：</strong>あなたが把握している事業の状況。会社名は仮名で構いません。<br><strong>手順：</strong>下を貼り、質問に1つずつ答える。<br><strong>できあがり：</strong>事実・仮説・未確認に分かれた事業メモ。</p><details><summary>インタビューの指示書を開く</summary><pre id="p-interview">私の事業を理解するために、聞き役になってください。
+一度に質問するのは1つだけ。私の回答を待って次へ進んでください。各回答を短く確認し、曖昧な場合だけ具体例を聞いてください。
+次の順に、未回答の項目を聞いてください。
+1. どんな商品・サービスを、どんなお客様に提供しているか
+2. 今の状況。すでにできていること・結果・止まっていること
+3. 目指す状態と達成を確認する数字や条件。期限は決まっていれば聞く
+4. 使える時間・人数・予算・既存の資料や仕組み
+5. 大切にしたい判断基準・守るルール・避けたいこと
+6. この情報の基準日
+分からない項目は「未確認」、未決定は「未決定」と記録し、推測で埋めないでください。仮説は事実と分けてください。
+最後に「事実／仮説／未確認／決定事項」の見出しで要約し、私に訂正を求めてください。訂正後の要約が完成したら終了です。
+では、最初の質問をしてください。</pre><div class="copyrow"><button data-copy="p-interview">インタビューをコピー</button><span class="status" role="status"></span></div></details><p class="small"><strong>詰まったら：</strong>「その質問を具体例つきで言い換えて」と返してください。数値が分からなければ空欄のままで進めます。</p></section>
+<section class="card" id="context"><span class="step">02 · 事業の説明書にする</span><h2>御社専用コンテキストシート</h2><p>コンテキストとは、判断に必要な背景情報です。①の要約を、次回も使える形にまとめます。</p><p class="goal"><strong>入力：</strong>①で確認した事業メモ。<br><strong>手順：</strong>同じチャットに下を貼る。完成後、自分の端末の文書へ保存する。<br><strong>できあがり：</strong>日付つきの「会社情報＋現在地＋目標」。</p><details><summary>シート生成の指示書を開く</summary><pre id="p-context">ここまでに私が確認した情報だけを使い、次の形式でコンテキストシートを作ってください。各項目は短く、未確認はそのまま残してください。値を補うための推測は不要です。
+
+# 事業コンテキスト
+基準日：
+更新者：
+## 会社・商品
+提供内容／対象のお客様／提供条件／強みの根拠：
+## 現在地（事実）
+できていること／実際の結果／進行中／止まっていること：
+## ゴール
+達成状態／確認する数字や条件／期限（未決なら未決）：
+## 使えるもの・制約
+時間／人数／予算／既存資料・仕組み／守るルール：
+## 判断基準・決定事項
+優先すること／避けること／すでに決めた方針：
+## 仮説
+確かめたいこと／確かめ方：
+## 未確認事項
+確認が必要な情報／確認先：
+
+書き終えたら、数字・日付・条件の確認を私に求めてください。</pre><div class="copyrow"><button data-copy="p-context">シート生成をコピー</button><span class="status" role="status"></span></div></details><p class="small"><strong>確認箇所：</strong>希望の数字が実績欄に入っていないか、仮説が確定事項になっていないか。別チャットではこのシートを貼り直してください。</p></section>
+<section class="card" id="boot"><span class="step">03 · 背景を踏まえて相談する</span><h2>AI参謀の起動指示書</h2><p>新しいチャットに、下の指示書と②のシートを一緒に貼ります。「参謀」は相談役の呼び名です。実行できる範囲は、使うAIや接続設定によって異なります。</p><p class="goal"><strong>入力：</strong>確認済みのコンテキストシート。<br><strong>できあがり：</strong>背景に沿った優先事項と、あなたが着手できる次の一歩。</p><details><summary>起動指示書を開く</summary><pre id="p-boot">以下の事業コンテキストを踏まえ、私の仕事を進める相談役になってください。
+最初に、目標・現在地・重要な制約を各1行で確認してください。
+回答では、提案に関係する事実と判断理由を簡潔に示し、仮説や未確認を区別してください。内部の思考過程の開示は不要です。
+私の相談に対して、優先事項を最大3つに絞り、最初の一歩を「何を・どこまで行えば完了か」で示してください。すでに完了している準備を繰り返さず、情報が不足して判断を左右する場合は1問ずつ確認してください。
+外部情報を調べた場合は出典と確認日を示してください。調べられない場合は未確認としてください。成果や数値を保証せず、確認できた能力・実行結果だけを説明してください。
+メール送信・公開・購入などの実行は、利用環境の権限と私の明示的な指示を確認してください。操作できないものは下書きや手順として渡し、実行済みと表現しないでください。
+このシートは記載日現在の情報です。更新を受け取ったら変更点を確認し、古い情報との矛盾を解消してください。受け取っていない進捗を自動で把握したとは扱わないでください。
+
+【ここに②のコンテキストシートを貼る】</pre><div class="copyrow"><button data-copy="p-boot">起動指示書をコピー</button><span class="status" role="status"></span></div></details><p class="small"><strong>詰まったら：</strong>回答が一般論なら「シートのどの事実に基づく提案？ 今日の作業を1つに絞って」と追加してください。答えが状況と合わなければ②を訂正します。</p></section>
+<section class="card" id="compare"><span class="step">04 · 自分で違いを確かめる</span><h2>コンテキストあり・なし比較</h2><p>同じAI・同じモデルで、独立した新しいチャットを2つ開きます。片方には質問だけ、もう片方には③と②を貼ってから、まったく同じ質問を送ってください。</p><p class="note">比較用チャットでは、使える場合は過去の会話の参照・メモリ・共通のカスタム指示を無効にしてください。難しい場合は設定を記録し、厳密な比較ではないと捉えます。AIの出力には揺れがあり、常に改善するとは限りません。</p><details><summary>比較用の質問・架空デモを開く</summary><pre id="p-question">最初の5社を獲得するために、今日の60分で何を進めるとよいですか。優先する作業を1つと、具体的な手順・完了条件を示してください。</pre><div class="copyrow"><button data-copy="p-question">共通の質問をコピー</button><span class="status" role="status"></span></div><pre id="p-demo">【練習用の架空データ。実在企業の実績ではありません】
+基準日：2026年10月25日
+商品：小規模企業向けのAI導入支援。初期導入10万円
+対象：問い合わせ返信などの繰り返し業務に困る経営者
+現在地：サービス内容、LP、公式LINEは完成。新規10社へ案内済み。返信は未確認。契約0社
+ゴール：有料導入の最初の5社を獲得する。期限は未決定
+制約：今日は60分。経営者の知り合いはいない。広告予算は未決定
+判断基準：既存の仕組みを使い、経営者との具体的な相談機会を増やす
+仮説：繰り返し業務のある会社に、実例を交えた提案が響くかもしれない
+未確認：返信状況、商談化率、営業先の現在の課題</pre><div class="copyrow"><button data-copy="p-demo">架空デモをコピー</button><span class="status" role="status"></span></div><h3>回答の完成見本</h3><p class="small">以下は違いを説明するために作った仮例です。AIの実測結果・改善保証ではありません。</p><div class="compare-grid"><div class="example"><h3>背景なしの仮例</h3><p>対象顧客を決め、サービス紹介ページを用意して、知人へ声をかけましょう。</p><p class="small">確認：準備済みの作業や、使えない経路が含まれていませんか。</p></div><div class="example"><h3>背景ありの仮例</h3><p>まず送信済み10社の返信を確認しましょう。相談希望があれば内容に合わせた返信下書きを作り、なければ新規候補1社の業務と公式窓口を確認し、既存LPを添える個別文面を仕上げます。</p><p class="small">確認：送信日・経路・営業可否など、追加確認が必要な情報は残っています。</p></div></div></details><h3>比べるのは、この3点</h3><ol><li>準備済みのものや制約を踏まえているか。</li><li>自分の仕事で使える具体性があるか。</li><li>修正・説明し直しの手間が減ったか。</li></ol><p class="small"><strong>詰まったら：</strong>差が小さければ、一般論で答えられる質問になっていないか確認。実際に困っている仕事に質問を変え、両チャットに同じ質問を送ります。都合のよい回答だけを残さず記録してください。</p></section>
+<section class="card" id="work"><span class="step">05 · 仕事をひとつ進める</span><h2>今日の行動・営業文・提案改善</h2><p>③で起動したチャットで、必要な指示書を1つ選びます。【 】を埋めてから送ってください。</p><details><summary>今日の優先行動を決める</summary><pre id="p-priority">事業コンテキストを踏まえ、今日の【使える時間】で進める行動を1つ選んでください。
+追加の現状：【今日の進捗・止まっていること】
+判断理由を2行、手順を3つ、完了条件を1つ示してください。重要な未確認事項があれば、最初に1つだけ質問してください。未着手の作業を完了済みと扱わないでください。</pre><div class="copyrow"><button data-copy="p-priority">行動の指示書をコピー</button><span class="status" role="status"></span></div><p class="small">期待結果：終わりが分かる作業1つ。大きすぎる場合は「最初の15分まで分けて」と返します。</p></details><details><summary>相手に合わせた営業メールを下書きする</summary><pre id="p-mail">事業コンテキストと下の確認済み情報から、営業メールの下書きを作ってください。
+相手の事業・確認できた業務：【 】
+情報源と確認日：【 】
+提案する内容・渡せる資料URL：【 】
+差出人の事実・使ってよい肩書き：【 】
+相手の課題は仮説として表し、実績や効果を創作しないでください。売り込みを隠さず、相手の業務と提案のつながりを短く示し、依頼は1つに絞ってください。件名1案、本文、送信前に確認すべき事実を出してください。送信は行わず、確認用の下書きとして渡してください。</pre><div class="copyrow"><button data-copy="p-mail">営業メールをコピー</button><span class="status" role="status"></span></div><p class="small">期待結果：相手の業務に沿った下書き。宛先・営業受付可否・URL・実績を確認。個別情報がなければ、先に公式情報を調べます。</p></details><details><summary>提案の抜け・誤解を見つける</summary><pre id="p-proposal">事業コンテキストと下の情報で、提案を点検してください。
+相手が実際に話した課題：【 】
+提案文：【 】
+確定している提供範囲・条件：【 】
+①相手の課題とずれる箇所 ②根拠の弱い約束 ③範囲・条件の曖昧さを指摘し、優先して直す3点と修正文を示してください。相手の発言とこちらの仮説を区別し、未合意の条件は確定しないでください。</pre><div class="copyrow"><button data-copy="p-proposal">提案改善をコピー</button><span class="status" role="status"></span></div><p class="small">期待結果：直す箇所と修正文。提供できる範囲・金額・開始日は人が確認し、相手の意向が不明なら質問に戻ります。</p></details><p><strong>日々の文章業務にも：</strong><a href="../shijisho/">付録「雑務を減らすAI指示書10」へ →</a><br><span class="small">問い合わせ返信、説明文、議事録など。確認済みのコンテキストと組み合わせて使えます。</span></p></section>
+<section class="card" id="choose"><span class="step">06 · 小さく選んで、測る</span><h2>最初に任せる業務を選ぶ</h2><p>繰り返しがあり、使える材料があり、正しさを人が確認できる仕事から試します。所要時間は確認・修正まで含めて記録します。</p><details><summary>業務選定・前後実測シートを開く</summary><pre id="p-choose">下の業務候補から、最初にAIで試す1つを選ぶ相談に乗ってください。
+候補ごとに記入：
+業務名／月の件数／1件の通常所要時間／使える資料／確認担当／誤りの影響／社内ルール上の入力可否
+【ここに候補を2〜3件記入】
+
+頻度、材料の有無、確認のしやすさ、誤りの影響を比較してください。未測定を推測の数字で埋めず、影響が小さく、人が確認できる1件の試し方を提案してください。
+出力：選ぶ業務／理由／準備する匿名化した入力／人が確認する項目／試行の完了条件。</pre><div class="copyrow"><button data-copy="p-choose">業務選定をコピー</button><span class="status" role="status"></span></div><pre id="p-measure"># 1件の試行記録
+日付／業務名／使用AI・モデル：
+対象の難易度・件数：
+AIなし：作業 分＋確認・修正 分＝合計 分
+AIあり：入力準備 分＋生成・待機 分＋確認・修正 分＝合計 分
+品質：必要条件を満たしたか／誤り／修正した箇所
+背景情報を追加した箇所：
+次に変えること：
+結論：続ける／条件を変えて再試行／今回は見送る</pre><div class="copyrow"><button data-copy="p-measure">実測シートをコピー</button><span class="status" role="status"></span></div></details><p class="small"><strong>期待結果：</strong>時間と品質の両方を判断できる記録。似た難易度の業務で数件試し、1回の結果を全業務の削減効果に広げないでください。時間が増えたら、入力準備と修正のどちらにかかったかを見直します。</p><p><a href="#handoff">次へ：社員に渡す実行・確認手順を整える →</a></p></section>
+<section class="card" id="handoff"><span class="step">07 · 社員と共有する</span><h2>社員に渡せる、AI活用手順書</h2><p>試してよかった業務を、担当者が変わっても確認できる形にします。下の空欄を埋め、社内で使ってよいか確認してから共有してください。</p><details><summary>実行・確認手順のひな型を開く</summary><pre id="p-handoff"># AI活用手順書
+業務名：
+作成日・改訂日：
+実行担当／確認担当：
+利用を認めたAI・設定：
+使うコンテキストシートの版・保管場所：
+使う指示書：
+
+1. 入力前
+最新のシートか確認する。社内の情報管理ルールを確認し、顧客名・連絡先・契約情報等を必要に応じ匿名化する。匿名化しても機密性が残る情報は、許可された環境と範囲でのみ扱う。
+2. 実行
+確認済みのシートと指示書を貼り、必要な情報を追加する。AIの出力は下書きとして扱う。
+3. 人が確認
+事実／数字／日付／宛先／金額／条件／個人情報／未合意の約束を確認する。根拠のない箇所は修正するか、担当へ確認する。
+4. 使用・保存
+確認担当が承認したものを利用する。成果物と修正点を社内で決めた場所に保存する。外部への送信・公開は社内の承認手順に従う。
+5. 更新
+商品・目標・進捗・ルールが変わったら、更新担当が日付つきでシートを更新する。別チャットには最新版を貼り直す。
+6. 困ったとき
+入力してよいか不明なら確認担当へ相談する。誤りが続く場合は使用を止め、材料・指示・確認項目を見直す。
+
+この業務で特に確認すること：
+困ったときの連絡先：</pre><div class="copyrow"><button data-copy="p-handoff">手順書をコピー</button><span class="status" role="status"></span></div></details><p class="small"><strong>期待結果：</strong>入力・実行・確認・更新の担当が決まった1枚。初回は架空データを使い、別の担当者がこの手順だけで進められるか確認します。</p></section>
+<section class="card" id="update"><span class="eyebrow">WHEN THINGS CHANGE</span><h2>状況が変わったら、<br>AIに伝える情報も更新。</h2><p>新しい商談、変わった目標、決まった方針。今回のキットでは、自分でその差分を伝えます。同じチャットでも、長いやりとりの後は最新版のシートを貼って確認してください。</p><details><summary>差分更新の入力例を開く</summary><pre id="p-update">コンテキストを更新してください。下の差分は架空の練習例です。実際に使う時は自分の事実に置き換えます。
+更新日：2026年10月27日
+変更前：新規10社に案内済み。返信未確認。契約0社。
+変更後（確認済みの事実）：2社から返信。うち1社と診断日程を調整中。契約0社。
+新しい決定事項：今日は診断日程の確定を優先する。
+未確認：相手の対象業務と決裁者。
+
+旧情報と置き換える箇所を示し、矛盾があれば確認してください。更新済みのコンテキストシートを全文で出し、今日の最初の一歩を1つ提案してください。</pre><div class="copyrow"><button data-copy="p-update">更新例をコピー</button><span class="status" role="status"></span></div></details><p>有料の導入支援では、日々の情報をどう取り込み、更新し、仕事に使うかまで設計します。対象の情報源・接続方法・反映するタイミング・人の確認範囲は、ご相談のうえで決めます。</p><p class="small">あらゆる情報が自動でリアルタイムに反映されるものではありません。接続可能な環境や権限、更新条件によって対応範囲は異なります。</p></section>
+<section class="card navy" id="consult"><span class="eyebrow">NEXT STEP · 30 MINUTES</span><h2>御社の仕事では、<br>どこから始めるとよいか。</h2><p>体験した業務と、うまくいった点・詰まった点を教えてください。30分診断で、最初に扱う業務と必要な情報を一緒に整理します。</p><p>LINEで「30分診断を予約」と送ってください。日程は返信で調整します。</p><a class="button" href="https://line.me/R/oaMessage/%40543rhryb/?30%E5%88%86%E8%A8%BA%E6%96%AD%E3%82%92%E4%BA%88%E7%B4%84" target="_blank" rel="noopener">公式LINEで診断を予約 →</a><p class="small">リンクが開かない場合は、この教材を受け取った公式LINEのトークへ戻って送信してください。</p></section>
+</main><footer>自社専門AI｜桂 · 無料体験キット<br>教材中のデモ・回答見本は架空の説明用サンプルです。</footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(button=>{button.type='button';button.addEventListener('click',async()=>{const value=document.getElementById(button.dataset.copy).textContent;let copied=false;try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(value);copied=true}}catch(error){}if(!copied){const field=document.createElement('textarea');field.value=value;field.style.cssText='position:fixed;left:-9999px;top:0';document.body.append(field);field.select();try{copied=document.execCommand('copy')}catch(error){}field.remove();button.focus()}button.parentElement.querySelector('.status').textContent=copied?'コピーしました。AIのチャットへ貼り付けてください。':'コピーできませんでした。本文を選択してコピーしてください。'})});
+</script></body></html>
