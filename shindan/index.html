@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>自社専門AI｜毎日奪われている時間を、取り戻す。</title>
 <meta name="description" content="全国オンライン対応。移動の手間なく、いつもの職場からAI導入を相談できます。まず3分診断で時間を整理し、必要なら30分で御社の業務を一緒に確かめます。">
+<link rel="preload" as="image" href="../frames/f000.jpg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-:root{
+:root{--header-height:52px;
   --ink:#1d1d1f; --sub:#6e6e73; --mute:#86868b; --line:#d2d2d7;
   --bg:#ffffff; --bg2:#f5f5f7; --navy:#12213f; --navy2:#1c2f57; --gold:#b08d4a; --gold2:#d9bf86;
   --r:28px; --w:1120px;
@@ -201,7 +202,53 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes blink{50%{opacity:0}}
 @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}.card,.card:hover{transition:none;transform:none}html{scroll-behavior:auto}.pane .out .caret{animation:none}}
+/* ===== 1画面目：スクロールで、夜の町から灯った窓、机のPC画面へ寄っていく映像（連番JPGをコマ送り） ===== */
+.film{position:relative;height:520vh;background:#08111f;color:#fff}
+.stage{position:sticky;top:var(--header-height);height:calc(100svh - var(--header-height));overflow:hidden;background:#08111f url('../frames/f000.jpg?v=2') center/cover no-repeat}
+#filmCv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage:after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 50%,rgba(8,17,31,0) 40%,rgba(8,17,31,.55) 100%),linear-gradient(to bottom,rgba(8,17,31,.35),rgba(8,17,31,0) 30%,rgba(8,17,31,0) 65%,rgba(8,17,31,.6))}
+.beat{position:absolute;z-index:2;left:0;right:0;padding:0 24px;max-width:var(--w);margin:0 auto;opacity:0;will-change:opacity,transform;pointer-events:none}
+.beat.on{pointer-events:auto}
+.beat[aria-hidden="true"]{visibility:hidden}
+.b1{opacity:1}
+.beat h1{font-size:clamp(34px,7.4vw,80px);font-weight:900;letter-spacing:-.02em;line-height:1.2;text-shadow:0 2px 0 rgba(0,0,0,.3),0 4px 28px rgba(8,17,31,.9),0 0 60px rgba(8,17,31,.7)}
+.beat h1 small{display:block;font-size:clamp(14px,2.4vw,18px);font-weight:500;color:#dfe4ee;letter-spacing:0;margin-top:16px;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.beat .say{display:inline-block;padding:16px 30px;border-radius:22px;background:rgba(8,17,31,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 40px rgba(8,17,31,.35);
+  font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1.4}
+.beat .say span{display:block;font-size:.55em;font-weight:500;color:#dfe4ee;margin-top:10px}
+.beat .lead{font-size:clamp(32px,5.6vw,60px);font-weight:900;line-height:1.3;letter-spacing:-.01em;text-shadow:0 2px 0 rgba(0,0,0,.3),0 4px 28px rgba(8,17,31,.9),0 0 60px rgba(8,17,31,.7)}
+.beat .sub{margin-top:14px;font-size:clamp(15px,2.2vw,20px);font-weight:500;color:#e8ecf4;text-shadow:0 2px 14px rgba(8,17,31,.9)}
+.beat .links{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:26px}
+.beat .link{color:var(--gold2);text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.b1{bottom:14vh}.b2{top:22vh}.b3{bottom:16vh}.b4{top:28vh}
+.b2,.b3{text-align:center}
+.scroll{position:absolute;left:50%;bottom:22px;z-index:2;transform:translateX(-50%);font-size:11px;letter-spacing:.2em;color:#c9d0de;display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .4s}
+.scroll i{width:1px;height:34px;background:linear-gradient(var(--gold2),transparent);animation:drop 1.8s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.meter{position:absolute;z-index:2;right:20px;top:50%;width:2px;height:120px;margin-top:-60px;background:rgba(255,255,255,.15);border-radius:2px}
+.meter i{display:block;width:100%;height:0;background:var(--gold2);border-radius:2px}
+.film-controls{position:absolute;z-index:3;top:20px;right:24px;display:flex;gap:10px;align-items:center}
+.film-controls a,.film-controls button{padding:10px 14px;border:1px solid #ffffff50;border-radius:999px;background:#08111fbf;color:#fff;font-size:12px;min-height:44px;display:inline-flex;align-items:center}
+.film.is-static{height:auto}
+.film.is-static .stage{position:relative;top:0;height:auto;min-height:calc(100svh - var(--header-height));display:flex;flex-direction:column;justify-content:center;gap:40px;padding:100px 0 110px}
+.film.is-static #filmCv,.film.is-static .b2,.film.is-static .b3,.film.is-static .scroll,.film.is-static .meter{display:none}
+.film.is-static .b1,.film.is-static .b4{position:relative;top:auto;bottom:auto;width:100%;opacity:1!important;transform:none!important;visibility:visible;pointer-events:auto}
+.film.is-static .stage:after{background:#08111f80}
+.motion-reduced .rv,.motion-reduced.reveal-ready .rv:not(.in){opacity:1;transform:none;transition:none}
+.motion-reduced .scroll i{animation:none}
+.motion-reduced .tilt,.motion-reduced .tilt>*{transform:none!important;transition:none!important}
+.motion-reduced{scroll-behavior:auto}
+@media(max-width:699px){
+  .film{height:420vh}.meter{display:none}.b1{bottom:12vh}
+  .film-controls{top:14px;right:16px;left:16px;justify-content:space-between}
+  .beat{padding:0 20px}.b4{top:22%}.b3{bottom:24%}
+  .beat .lead{font-size:clamp(26px,7.4vw,36px)}
+  .beat .links{gap:18px}.beat .btn{font-size:15px;padding:15px 20px}
+  .beat h1{font-size:clamp(22px,6.6vw,30px)}
+}
 </style>
+<noscript><style>.film{height:auto}.stage{position:relative;top:0;height:auto;min-height:90svh;padding:110px 0}.beat{display:none}.beat.b1,.beat.b4{display:block;position:relative;top:auto;bottom:auto;opacity:1;margin-bottom:32px;pointer-events:auto}.film-controls,.scroll,.meter,#filmCv{display:none}</style></noscript>
 </head>
 <body>
 
@@ -220,16 +267,25 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 <main id="top">
 
 <!-- 1 1画面目 -->
-<section class="hero">
-  <div class="wrap">
-    <h1 class="rv">自社専門AI<small>全国の会社に、職場からオンラインで。御社専門のAI導入を支援します。</small></h1>
-    <div class="side rv">
-      <p class="lead">毎日奪われている時間を、<br>取り戻す。</p>
+<section class="film" id="film">
+  <div class="stage">
+    <div class="film-controls"><a href="#loss">先へスキップ ↓</a><button id="motionBtn" type="button" aria-pressed="false">動きを止める</button></div>
+    <canvas id="filmCv" aria-hidden="true"></canvas>
+    <div class="beat b1" data-in="0" data-out=".2">
+      <h1>毎日奪われている時間を、<br>取り戻す。<small>自社専門AI｜全国の会社に、職場からオンラインで。御社専門のAI導入を支援します。</small></h1>
+    </div>
+    <div class="beat b2" data-in=".26" data-out=".44"><p class="say">夜9時。<br>まだ、灯りが消えない。</p></div>
+    <div class="beat b3" data-in=".52" data-out=".72"><p class="say">返信、紹介文、議事録。<br><span>社長の手が、後回しの仕事で埋まっていく。</span></p></div>
+    <div class="beat b4" data-in=".8" data-out="9">
+      <p class="lead">その時間、<br>毎月どれだけですか。</p>
+      <p class="sub">3分・12問の無料診断で、御社が失っている時間がわかります。</p>
       <div class="links">
-        <a class="link" href="#diag">3分で、失っている時間を診断する ›</a>
+        <a class="btn" href="#diag">3分で、失っている時間を診断する →</a>
         <a class="link mailLink" href="mailto:katsuraharuki@outlook.jp">メールで相談する ›</a>
       </div>
     </div>
+    <div class="scroll" aria-hidden="true">SCROLL<i></i></div>
+    <div class="meter" aria-hidden="true"><i id="meter"></i></div>
   </div>
 </section>
 
@@ -314,16 +370,16 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         <ol class="top3" id="rTop"></ol>
         <p class="want" id="rWant"></p>
         <div class="gift">
-          <span class="eyebrow">診断の続き・無料</span>
-          <h4>御社の業務で、AIに任せられる所を<br>1枚にまとめてお送りします。</h4>
+          <span class="eyebrow">診断の特典・無料</span>
+          <h4>結果を送っていただいた会社さまに、<br>3つの特典をメールでお渡しします。</h4>
           <ul>
-            <li>TOP3のうち、どこから任せるとよいかを、御社の業務に合わせて見立てます</li>
-            <li>任せた場合に戻る時間の目安と、その先にできることも書きます</li>
-            <li>しつこい営業はしません</li>
+            <li>御社の仕事を1件、AI社員が代わりにやった実物（問い合わせへの返信／商品・サービスの紹介文／打合せメモからの議事録のうち1つ）</li>
+            <li>御社の業務で、AIに任せられる所を1枚にまとめた資料</li>
+            <li>御社専属のAI参謀を自分でつくれる体験キット（教材7つと、すぐ使えるAI指示書10）</li>
           </ul>
-          <a class="btn navy" id="mailBtn" href="mailto:katsuraharuki@outlook.jp">診断の結果を送って、続きを受け取る →</a>
-          <p class="tiny">ボタンを押すとメールが開き、診断の結果が入力された状態になります。そのまま送信してください。ご案内のメールをお受け取りの方は、そのメールに「続き希望」とご返信いただくだけでも大丈夫です。</p>
-          <p class="tiny">メールが開かない場合は、katsuraharuki@outlook.jp まで「続き希望」とお送りください。</p>
+          <a class="btn navy" id="mailBtn" href="mailto:katsuraharuki@outlook.jp">診断の結果を送って、特典を受け取る →</a>
+          <p class="tiny">ボタンを押すとメールが開き、診断の結果が入力された状態になります。そのまま送信してください。しつこい営業はしません。</p>
+          <p class="tiny">メールが開かない場合は、katsuraharuki@outlook.jp まで「特典希望」とお送りください。</p>
         </div>
         <div style="margin-top:18px"><button class="back" id="retryBtn" style="color:#c9d0de;font-size:14px">もう一度診断する</button></div>
       </div>
@@ -501,7 +557,8 @@ const Q = [
 ];
 
 const $ = s => document.getElementById(s);
-const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
+let reduce = motionPreference.matches;
 const A = {}; let i = 0;
 
 /* メールのリンク */
@@ -591,11 +648,11 @@ function showResult() {
     `AIの利用：${A.aiuse}`,
     `空いた時間でやりたいこと：${(A.want || []).join("、")}`,
     "",
-    "診断の続き（1枚の資料）を希望します。",
+    "特典を希望します。",
     "会社名：",
     "お名前："
   ].join("\n");
-  $("mailBtn").href = `mailto:${MAIL_TO}?subject=${encodeURIComponent("AI診断の続き希望")}&body=${encodeURIComponent(msg)}`;
+  $("mailBtn").href = `mailto:${MAIL_TO}?subject=${encodeURIComponent("特典希望（AI診断の結果）")}&body=${encodeURIComponent(msg)}`;
 
   $("quiz").hidden = true;
   $("result").classList.add("show");
@@ -651,6 +708,122 @@ vsObs.observe(document.querySelector(".vs"));
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
 document.querySelectorAll(".rv").forEach(el => io.observe(el));
 
+/* ===== 1画面目：スクロールに合わせて映像をコマ送りする ===== */
+(function () {
+  const FRAMES = 120, src = k => `../frames/f${String(k).padStart(3, "0")}.jpg?v=2`;   // 画像を作り直したら v の数字を上げる（古い画像のキャッシュを避ける）
+  const film = $("film"), stage = film.querySelector(".stage"), cv = $("filmCv"), ctx = cv.getContext("2d");
+  const beats = [...film.querySelectorAll(".beat")];
+  const imgs = new Map(), pending = new Set(), failed = new Set();
+  const CACHE_LIMIT = 20, CONCURRENCY = 4;
+  let queue = [];
+  let cur = -1, want = 0;
+
+  // 必要なコマの近くから4枚ずつ読み、保持は20枚までにする。
+  function pump() {
+    if (reduce) return;
+    while (pending.size < CONCURRENCY && queue.length) {
+      const k = queue.shift();
+      if (imgs.has(k) || pending.has(k) || failed.has(k)) continue;
+      pending.add(k);
+      const im = new Image(); im.decoding = "async";
+      im.onload = () => {
+        pending.delete(k);
+        if (!reduce) {
+          imgs.set(k, im);
+          while (imgs.size > CACHE_LIMIT) {
+            const farthest = [...imgs.keys()].sort((a,b) => Math.abs(b-want)-Math.abs(a-want))[0];
+            imgs.delete(farthest);
+          }
+          draw(true);
+        }
+        pump();
+      };
+      im.onerror = () => { pending.delete(k); failed.add(k); pump(); };
+      im.src = src(k);
+    }
+  }
+  function requestFrames() {
+    queue = [0, 1, 2, 3, 4, 5, -1, 6, -2, 7, -3, 8].map(d => want + d)   // 進む向き（下）を多めに
+      .filter(k => k >= 0 && k < FRAMES && !imgs.has(k) && !pending.has(k) && !failed.has(k));
+    pump();
+  }
+
+  function size() {
+    const r = Math.min(devicePixelRatio || 1, 1.5);
+    cv.width = cv.clientWidth * r; cv.height = cv.clientHeight * r; draw(true);
+  }
+  // 画面いっぱいに切り抜いて描く（cover）
+  function draw(force) {
+    if (reduce || !ctx || !imgs.size) return;
+    const k = [...imgs.keys()].sort((a,b) => Math.abs(a-want)-Math.abs(b-want))[0];
+    const im = imgs.get(k);
+    if (!im || (k === cur && !force)) return;
+    cur = k;
+    const s = Math.max(cv.width / im.width, cv.height / im.height);
+    const w = im.width * s, h = im.height * s;
+    ctx.drawImage(im, (cv.width - w) / 2, (cv.height - h) / 2, w, h);
+  }
+
+  const fade = (p, a, b) => {            // a〜b の間だけ見える（前後 .05 でふわっと）
+    const e = .05;
+    return Math.max(0, Math.min(1, (p - a) / e + (a === 0 ? 1 : 0), (b - p) / e));
+  };
+  function tick() {
+    if (reduce) return;
+    const r = film.getBoundingClientRect();
+    const header = document.querySelector(".hdr").offsetHeight;
+    const p = Math.min(1, Math.max(0, (header-r.top) / Math.max(1,r.height-stage.clientHeight)));
+    const nextFrame = Math.round(p * (FRAMES - 1));
+    if (nextFrame !== want || !imgs.size) { want = nextFrame; requestFrames(); }
+    draw();
+    beats.forEach(el => {
+      const o = fade(p, +el.dataset.in, +el.dataset.out);
+      el.style.opacity = o;
+      el.style.transform = reduce ? "" : `translate3d(0,${(1 - o) * 24}px,0) scale(${.97 + o * .03})`;
+      el.classList.toggle("on", o > .5);
+      el.inert = o <= .05;
+      el.setAttribute("aria-hidden", o <= .05 ? "true" : "false");
+    });
+    $("meter").style.height = p * 100 + "%";
+    film.querySelector(".scroll").style.opacity = p > .03 ? 0 : 1;
+  }
+  let raf = 0;
+  addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; tick(); }); }, { passive: true });
+  addEventListener("resize", () => { size(); tick(); });
+  function setMotion(stopped) {
+    reduce = stopped || !ctx;
+    document.documentElement.classList.toggle("motion-reduced", reduce);
+    film.classList.toggle("is-static", reduce);
+    $("motionBtn").setAttribute("aria-pressed", String(reduce));
+    $("motionBtn").textContent = reduce ? "動きを再生する" : "動きを止める";
+    if (reduce) {
+      queue = []; imgs.clear(); cur = -1;
+      beats.forEach(el => {
+        const visible = el.classList.contains("b1") || el.classList.contains("b4");
+        el.inert = !visible; el.setAttribute("aria-hidden", String(!visible));
+      });
+    } else { size(); requestFrames(); tick(); }
+  }
+  $("motionBtn").onclick = () => {
+    setMotion(!reduce);
+    window.scrollTo({top:film.getBoundingClientRect().top + scrollY - document.querySelector(".hdr").offsetHeight,behavior:"instant"});
+  };
+  motionPreference.addEventListener("change", e => setMotion(e.matches));
+  setMotion(reduce);
+
+  // ページを読み終えたら、残りのコマを2枚ずつブラウザのキャッシュへ先読みする（速くスクロールしても映像が遅れないように）。
+  // 画像として持つのは上の20枚だけなので、メモリは増えない。データ節約モードと「動きを止める」の時は読まない。
+  addEventListener("load", () => {
+    if (reduce || (navigator.connection && navigator.connection.saveData)) return;
+    let n = 0;
+    const one = () => {
+      if (reduce || n >= FRAMES) return;
+      const k = n++;
+      fetch(src(k), { priority: "low" }).catch(() => {}).finally(one);
+    };
+    one(); one();
+  });
+})();
 </script>
 </body>
 </html>
