@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>自社専門AI｜人を雇わずに、御社を知り尽くした右腕を。</title>
-<meta name="description" content="全国オンライン対応。移動の手間なく、いつもの職場からAI導入を相談できます。まず3分診断で時間を整理し、必要なら30分で御社の業務を一緒に確かめます。">
+<title>自社専門AI｜御社の仕事を1件、AI社員が代わりにやります。</title>
+<meta name="description" content="無料・1社1件。問い合わせへの返信、商品・サービスの紹介文、打合せメモからの議事録。御社の仕事を1件、AI社員が代わりにやって、公式LINEでお届けします。やるのは3分のフォームだけ。">
 <link rel="preload" as="image" href="frames/f000.jpg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,19 +13,19 @@
 :root{
   --ink:#1d1d1f; --sub:#6e6e73; --mute:#86868b; --line:#d2d2d7;
   --bg:#ffffff; --bg2:#f5f5f7; --navy:#12213f; --navy2:#1c2f57; --gold:#b08d4a; --gold2:#d9bf86;
-  --r:28px; --w:1120px;
+  --r:28px; --w:1120px; --header-height:52px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:focus-visible{outline:3px solid #b08d4a;outline-offset:5px}
 .wrap{max-width:var(--w);margin:0 auto;padding:0 20px}
 .sec{padding:72px 0 8px;scroll-margin-top:52px}
-#diagBox{scroll-margin-top:68px}
 .sec.gray{background:var(--bg2)}
 .h2{font-size:clamp(24px,4.2vw,34px);font-weight:700;letter-spacing:-.01em;line-height:1.35;margin-bottom:24px}
-.h2 span{color:var(--mute);font-weight:700}
+.h2 span{color:var(--mute);font-weight:700;display:block}
 .link{color:#0066cc;font-size:15px;display:inline-flex;align-items:center;gap:2px}
 .link:hover{text-decoration:underline}
 .eyebrow{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.04em;margin-bottom:6px;display:block}
@@ -40,128 +40,69 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .logo b{color:var(--gold)}
 .nav{display:none;gap:26px;font-size:13px;color:#333}
 .nav a:hover{color:#000}
-.hdr .cta{font-size:13px;background:var(--navy);color:#fff;padding:7px 16px;border-radius:999px}
+.hdr .cta{font-size:13px;background:#06c755;color:#fff;padding:7px 16px;border-radius:999px}
 @media(min-width:900px){.nav{display:flex}}
 
-/* 業務アイコン列 */
-.icons{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;padding:28px 20px 36px;max-width:var(--w);margin:0 auto;scrollbar-width:none}
-.icons::-webkit-scrollbar{display:none}
-.ic{flex:0 0 auto;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:10px;width:84px;font-size:12px;font-weight:500;text-align:center;line-height:1.4}
-.ic .c{width:64px;height:64px;border-radius:50%;background:var(--bg2);display:grid;place-items:center;transition:transform .3s}
-.ic:hover .c{transform:translateY(-3px)}
-.ic svg{width:28px;height:28px;stroke:var(--navy);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+/* ボタン */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--navy);font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;max-width:100%;text-align:center;
+  box-shadow:0 4px 0 rgba(0,0,0,.18),0 10px 20px rgba(18,33,63,.18);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(0,0,0,.18),0 16px 28px rgba(18,33,63,.22)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18),0 4px 10px rgba(18,33,63,.18)}
+.btn.line{background:#06c755;color:#fff}
+.btn.big{font-size:18px;padding:18px 32px}
+.under{font-size:13px;color:var(--sub);margin-top:12px}
 
 /* 棚（横スクロールのカード） */
 .shelf{position:relative}
-.track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;padding:4px 20px 44px;scrollbar-width:none}
+.track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;padding:4px 20px 44px;scrollbar-width:none;perspective:1400px}
 .track::-webkit-scrollbar{display:none}
 @media(min-width:1160px){.track{padding-left:calc((100vw - var(--w))/2 + 20px);scroll-padding-left:calc((100vw - var(--w))/2 + 20px)}}
-.card{flex:0 0 auto;width:min(82vw,360px);min-height:420px;scroll-snap-align:start;background:#fff;border-radius:var(--r);padding:30px 28px;box-shadow:0 4px 20px rgba(0,0,0,.06);display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
-.card:hover{transform:scale(1.015);box-shadow:0 10px 34px rgba(0,0,0,.1)}
-.card.wide{width:min(88vw,560px)}
+.card{flex:0 0 auto;width:min(82vw,360px);min-height:400px;scroll-snap-align:start;background:#fff;border-radius:var(--r);padding:30px 28px;display:flex;flex-direction:column;
+  box-shadow:0 1px 2px rgba(18,33,63,.06),0 12px 28px rgba(18,33,63,.08),0 30px 60px -20px rgba(18,33,63,.18);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
 .card h3{font-size:24px;font-weight:700;line-height:1.35;margin-bottom:10px}
 .card p{font-size:14px;color:var(--sub)}
-.card .big{margin-top:auto;font-size:44px;font-weight:900;letter-spacing:-.02em;line-height:1.1}
+.card .big{margin-top:auto;padding-top:18px;font-size:44px;font-weight:900;letter-spacing:-.02em;line-height:1.1}
 .card .big small{font-size:15px;font-weight:500;margin-left:4px;color:var(--sub)}
-.card .calc{margin-top:18px;font-size:14px;color:var(--sub);border-top:1px solid #eee;padding-top:14px}
-.card.navy{background:var(--navy);color:#fff}
+.card .calc{margin-top:12px;font-size:13px;color:var(--sub)}
+.card .get{margin-top:18px;font-size:14px;border-top:1px solid #eee;padding-top:14px}
+.card .get b{display:block;font-size:12px;color:var(--gold);margin-bottom:2px}
+.card.navy{background:var(--navy);color:#fff;box-shadow:0 12px 28px rgba(18,33,63,.25),0 34px 70px -18px rgba(18,33,63,.45)}
 .card.navy p,.card.navy .calc,.card.navy .big small{color:#c9d0de}
-.card.navy .calc{border-color:rgba(255,255,255,.15)}
 .arrows{display:none;position:absolute;right:max(20px,calc((100vw - var(--w))/2 + 20px));top:-62px;gap:10px}
 .arrows button{width:36px;height:36px;border-radius:50%;background:rgba(210,210,215,.5);font-size:18px;color:#333}
 .arrows button:hover{background:rgba(210,210,215,.85)}
 @media(min-width:900px){.arrows{display:flex}}
+.plus{font-size:clamp(18px,2.6vw,22px);font-weight:700;line-height:1.6;padding:0 0 64px}
+.plus span{display:block;font-size:15px;font-weight:500;color:var(--sub);margin-top:6px}
 
-/* 診断 */
-.diag{background:var(--navy);color:#fff;border-radius:var(--r);padding:clamp(28px,5vw,56px);margin-bottom:56px;overflow:hidden;position:relative}
-.diag .eyebrow{color:var(--gold2)}
-.diag h3{font-size:clamp(26px,4.4vw,40px);font-weight:700;line-height:1.35;margin-bottom:12px}
-.diag .note{color:#c9d0de;font-size:14px}
-.btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy);font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;transition:transform .2s}
-.btn:hover{transform:translateY(-1px)}
-.btn.gold{background:var(--gold);color:#fff}
-.btn.navy{background:var(--navy);color:#fff}
-.btn.line{background:#06c755;color:#fff}
-.btn[disabled]{opacity:.35;pointer-events:none}
-.bar{height:4px;background:rgba(255,255,255,.15);border-radius:4px;margin:22px 0 26px;overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:var(--gold2);transition:width .4s}
-.qcount{font-size:13px;color:var(--gold2);font-weight:700}
-.qtitle{font-size:clamp(20px,3.2vw,26px);font-weight:700;line-height:1.45;margin:6px 0 4px}
-.qhelp{color:#c9d0de;font-size:13px;min-height:20px}
-.opts{display:grid;grid-template-columns:1fr;gap:10px;margin:20px 0 24px}
-@media(min-width:700px){.opts{grid-template-columns:1fr 1fr}}
-.opt{text-align:left;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);color:#fff;padding:14px 18px;border-radius:14px;font-size:15px;transition:background .2s,border-color .2s}
-.opt:hover{background:rgba(255,255,255,.13)}
-.opt.on{background:#fff;color:var(--navy);border-color:#fff;font-weight:700}
-.qnav{display:flex;justify-content:space-between;align-items:center}
-.qnav .back{color:#c9d0de;font-size:14px}
-.result{display:none}
-.result.show{display:block;animation:rise .6s ease both}
-.kpis{display:grid;grid-template-columns:1fr;gap:12px;margin:24px 0}
-@media(min-width:700px){.kpis{grid-template-columns:repeat(3,1fr)}}
-.kpi{background:rgba(255,255,255,.07);border-radius:18px;padding:18px 20px}
-.kpi .k{font-size:13px;color:#c9d0de}
-.kpi .v{font-size:clamp(38px,6vw,52px);font-weight:900;letter-spacing:-.02em;line-height:1.15}
-.kpi .v small{font-size:15px;font-weight:500;margin-left:4px;color:#c9d0de}
-.top3{list-style:none;display:grid;gap:10px;margin:12px 0 22px}
-.top3 li{background:#fff;color:var(--ink);border-radius:16px;padding:16px 18px}
-.top3 b{display:block;font-size:16px}
-.top3 .h{float:right;color:var(--gold);font-weight:700;font-size:14px}
-.top3 span.how{display:block;font-size:13px;color:var(--sub);margin-top:4px}
-.want{color:#fff;font-size:16px;line-height:1.8;margin-bottom:26px}
-.gift{background:#fff;color:var(--ink);border-radius:22px;padding:24px}
-.gift h4{font-size:20px;line-height:1.45;margin-bottom:8px}
-.gift ul{list-style:none;margin:12px 0 18px;font-size:14px}
-.gift li{padding:4px 0 4px 22px;position:relative}
-.gift li:before{content:"";position:absolute;left:2px;top:12px;width:9px;height:5px;border-left:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(-45deg)}
-.gift .tiny{font-size:12px;color:var(--mute);margin-top:10px}
+/* 流れ */
+.flow3{display:grid;gap:16px;margin-bottom:28px}
+@media(min-width:900px){.flow3{grid-template-columns:repeat(3,1fr)}}
+.step{background:#fff;border-radius:var(--r);padding:28px;box-shadow:0 1px 2px rgba(18,33,63,.06),0 12px 28px rgba(18,33,63,.08)}
+.step .n{width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;display:grid;place-items:center;margin-bottom:14px}
+.step h3{font-size:20px;line-height:1.45;margin-bottom:6px}
+.step p{font-size:14px;color:var(--sub)}
+.step .who{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--bg2);color:var(--navy)}
+.step .who.ai{background:var(--navy);color:#fff}
+.flow-cta{text-align:center;padding-bottom:72px}
 
-/* 見比べ */
-.vs{display:grid;gap:18px;margin-bottom:20px}
-@media(min-width:900px){.vs{grid-template-columns:1fr 1fr}}
-.vs .q{background:var(--bg2);border-radius:18px;padding:18px 20px;font-size:14px;margin-bottom:18px}
-.vs .q b{display:block;font-size:12px;color:var(--mute);margin-bottom:4px}
-.pane{border-radius:var(--r);padding:28px;min-height:360px;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.06)}
-.pane.navy{background:var(--navy);color:#fff}
-.pane h3{font-size:20px;margin-bottom:4px}
-.pane .tag{font-size:13px;color:var(--mute);margin-bottom:16px}
-.pane.navy .tag{color:#c9d0de}
-.pane .out{font-size:14.5px;line-height:1.9;white-space:pre-wrap;min-height:220px}
-.pane .out .caret{display:inline-block;width:2px;height:1em;background:currentColor;vertical-align:-2px;animation:blink 1s steps(1) infinite}
-.pane .verdict{margin-top:16px;font-size:13px;border-top:1px solid #eee;padding-top:12px;color:var(--sub)}
-.pane.navy .verdict{border-color:rgba(255,255,255,.15);color:#c9d0de}
-.vs-foot{font-size:clamp(18px,2.6vw,22px);font-weight:700;line-height:1.6;padding:8px 0 64px}
+/* 見本 */
+.sample{display:grid;gap:18px;margin-bottom:20px}
+@media(min-width:900px){.sample{grid-template-columns:1fr 1.5fr;align-items:start}}
+.ask{background:var(--bg2);border-radius:var(--r);padding:26px;font-size:15px}
+.ask b{display:block;font-size:12px;color:var(--mute);margin-bottom:6px}
+.ask .arrow{margin-top:18px;font-size:13px;color:var(--sub)}
+.pane{border-radius:var(--r);padding:28px;background:var(--navy);color:#fff;box-shadow:0 12px 28px rgba(18,33,63,.25),0 34px 70px -18px rgba(18,33,63,.45)}
+.pane .tag{font-size:13px;color:#c9d0de;margin-bottom:14px}
+.pane .out{font-size:14.5px;line-height:1.95;white-space:pre-wrap}
+.pane mark{background:rgba(217,191,134,.22);color:var(--gold2);border-radius:4px;padding:0 4px}
+.pane .verdict{margin-top:16px;font-size:13px;border-top:1px solid rgba(255,255,255,.15);padding-top:12px;color:#c9d0de}
+.sample-foot{font-size:clamp(17px,2.4vw,20px);font-weight:700;line-height:1.7;padding:8px 0 64px}
 
-/* 1対1 */
-.one{display:grid;gap:18px;padding-bottom:64px}
-@media(min-width:900px){.one{grid-template-columns:1.3fr 1fr}}
-.one .main{background:#fff;border-radius:var(--r);padding:clamp(28px,4vw,44px);box-shadow:0 4px 20px rgba(0,0,0,.06)}
-.one .main h3{font-size:clamp(24px,3.4vw,32px);line-height:1.4;margin-bottom:14px}
-.one .flow{list-style:none;counter-reset:f;margin:18px 0 22px}
-.one .flow li{counter-increment:f;padding:12px 0 12px 44px;position:relative;border-top:1px solid #eee;font-size:15px}
-.one .flow li:before{content:counter(f);position:absolute;left:0;top:12px;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-size:13px;display:grid;place-items:center;font-weight:700}
-.one .flow li span{display:block;font-size:13px;color:var(--sub)}
-.one .side{display:grid;gap:18px}
-.one .mini{background:#fff;border-radius:var(--r);padding:26px;box-shadow:0 4px 20px rgba(0,0,0,.06)}
-.one .mini h4{font-size:18px;margin-bottom:6px}
-.one .mini p{font-size:14px;color:var(--sub)}
-
-/* 取り戻す時間を金額で */
-.value{background:#fff;border-radius:var(--r);padding:clamp(28px,5vw,56px);box-shadow:0 4px 20px rgba(0,0,0,.06);margin-bottom:64px;display:grid;gap:24px}
-@media(min-width:900px){.value{grid-template-columns:1fr 1fr;align-items:center}}
-.value .eq{font-size:15px;color:var(--sub);line-height:2}
-.value .eq b{color:var(--ink);font-size:18px}
-.value .res{font-size:clamp(48px,8vw,76px);font-weight:900;letter-spacing:-.03em;line-height:1.05}
-.value .res small{font-size:18px;font-weight:500;color:var(--sub);margin-left:6px}
-.value .cmp{margin-top:14px;font-size:15px}
-.value .cmp b{color:var(--gold)}
-.cost{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px}
-.cost th,.cost td{padding:10px 8px;border-bottom:1px solid var(--line, #e5e7eb);text-align:left;vertical-align:top}
-.cost th{font-size:12px;color:var(--mute);font-weight:600}
-.cost td b{font-size:17px;color:var(--ink)}
-.cost .opt{font-size:11.5px;color:var(--gold);font-weight:700;white-space:nowrap}
-.cost td:first-child{white-space:nowrap;padding-right:14px}
-.value .note2{font-size:12.5px;color:var(--mute);line-height:1.8;margin-top:10px}
+/* 誰がやるか */
+.who-box{display:grid;gap:18px;padding-bottom:64px}
+@media(min-width:900px){.who-box{grid-template-columns:1fr 1fr}}
+.who-box .card{width:auto;min-height:0}
 
 /* FAQ */
 .faq{max-width:820px;padding-bottom:72px}
@@ -174,136 +115,90 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 
 /* 最後 */
 .final{text-align:center;padding:96px 20px}
-.final h2{font-size:clamp(34px,6vw,56px);font-weight:900;letter-spacing:-.02em;line-height:1.25;margin-bottom:14px}
+.final h2{font-size:clamp(34px,6vw,56px);font-weight:900;letter-spacing:-.02em;line-height:1.25;margin-bottom:14px;color:var(--navy);
+  text-shadow:0 1px 0 #c9cfdb,0 2px 0 #bcc3d2,0 3px 0 #aeb6c7,0 4px 0 #a1aabd,0 5px 0 #949eb3,0 18px 26px rgba(18,33,63,.25)}
 .final p{color:var(--sub);margin-bottom:28px}
 .foot{background:var(--bg2);font-size:12px;color:var(--sub);padding:24px 0 96px;line-height:1.8}
 .foot ol{padding-left:1.4em;margin-bottom:14px}
 .foot .copy{border-top:1px solid var(--line);padding-top:12px}
 
 /* 右下のLINEボタン */
-.fab{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#06c755;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .25s}
-.fab:hover{transform:scale(1.06)}
-.fab svg{width:30px;height:30px;fill:#fff}
-.fab .tip{position:absolute;right:68px;white-space:nowrap;background:#fff;color:var(--ink);font-size:12px;font-weight:700;padding:7px 12px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.12);opacity:0;transform:translateX(6px);transition:.3s;pointer-events:none}
-.fab:hover .tip,.fab.hint .tip{opacity:1;transform:none}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;height:48px;padding:0 16px;gap:10px;display:flex;align-items:center;border-radius:999px;background:#06c755;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .25s;font-size:12px;font-weight:700}
+.fab:hover{transform:scale(1.04)}
+.fab svg{width:25px;height:25px;fill:#fff}
 
 /* 動き */
-.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
-.rv.in{opacity:1;transform:none}
-@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-@keyframes blink{50%{opacity:0}}
-@media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}.card,.card:hover{transition:none;transform:none}html{scroll-behavior:auto}.pane .out .caret{animation:none}}
+.rv{transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal-ready .rv:not(.in){opacity:0;transform:perspective(1200px) translateY(40px) rotateX(16deg);transform-origin:50% 0}
+.tilt{transform-style:preserve-3d;will-change:transform;position:relative}
+.tilt h3,.tilt .big{transform:translateZ(36px)}
+.tilt .eyebrow,.tilt .calc{transform:translateZ(18px)}
+.tilt .glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.35),rgba(255,255,255,0) 55%);mix-blend-mode:soft-light}
+.tilt:hover .glare{opacity:1}
 
-/* ===== 3D ===== */
-/* 1画面目：スクロールで、夜の町から灯った窓、机のPC画面へ寄っていく映像（連番JPGをコマ送り） */
+/* ===== 1画面目：スクロールで、夜の町から灯った窓、机のPC画面へ寄っていく映像（連番JPGをコマ送り） ===== */
 .film{position:relative;height:520vh;background:#08111f;color:#fff}
-.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.stage{position:sticky;top:var(--header-height);height:calc(100svh - var(--header-height));overflow:hidden;background:#08111f url('frames/f000.jpg?v=2') center/cover no-repeat}
 #filmCv{position:absolute;inset:0;width:100%;height:100%;display:block}
 .stage:after{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(120% 90% at 50% 50%,rgba(8,17,31,0) 40%,rgba(8,17,31,.55) 100%),linear-gradient(to bottom,rgba(8,17,31,.35),rgba(8,17,31,0) 30%,rgba(8,17,31,0) 65%,rgba(8,17,31,.6))}
 .beat{position:absolute;z-index:2;left:0;right:0;padding:0 24px;max-width:var(--w);margin:0 auto;opacity:0;will-change:opacity,transform;pointer-events:none}
 .beat.on{pointer-events:auto}
-.beat h1{font-size:clamp(56px,13vw,132px);font-weight:900;letter-spacing:-.03em;line-height:1.02;text-shadow:0 2px 0 rgba(0,0,0,.25),0 18px 40px rgba(0,0,0,.55)}
+.beat[aria-hidden="true"]{visibility:hidden}
+.b1{opacity:1}
+.beat h1{font-size:clamp(34px,7.4vw,80px);font-weight:900;letter-spacing:-.02em;line-height:1.2;text-shadow:0 2px 0 rgba(0,0,0,.3),0 4px 28px rgba(8,17,31,.9),0 0 60px rgba(8,17,31,.7)}
 .beat h1 small{display:block;font-size:clamp(14px,2.4vw,18px);font-weight:500;color:#dfe4ee;letter-spacing:0;margin-top:16px;text-shadow:0 2px 12px rgba(0,0,0,.6)}
-.beat .say{font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1.4;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+.beat .say{display:inline-block;padding:16px 30px;border-radius:22px;background:rgba(8,17,31,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 40px rgba(8,17,31,.35);
+  font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1.4}
 .beat .say span{display:block;font-size:.55em;font-weight:500;color:#dfe4ee;margin-top:10px}
-.beat .lead{font-size:clamp(32px,5.6vw,60px);font-weight:900;line-height:1.3;letter-spacing:-.01em;text-shadow:0 4px 30px rgba(8,17,31,.8)}
+.beat .lead{font-size:clamp(32px,5.6vw,60px);font-weight:900;line-height:1.3;letter-spacing:-.01em;text-shadow:0 2px 0 rgba(0,0,0,.3),0 4px 28px rgba(8,17,31,.9),0 0 60px rgba(8,17,31,.7)}
 .beat .sub{margin-top:14px;font-size:clamp(15px,2.2vw,20px);font-weight:500;color:#e8ecf4;text-shadow:0 2px 14px rgba(8,17,31,.9)}
 .beat .links{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:26px}
 .beat .link{color:var(--gold2);text-shadow:0 2px 10px rgba(0,0,0,.6)}
-.b1{bottom:14vh}.b2{top:22vh}.b3{bottom:16vh}.b4{top:32vh}
+.b1{bottom:14vh}.b2{top:22vh}.b3{bottom:16vh}.b4{top:28vh}
 .b2,.b3{text-align:center}
 .scroll{position:absolute;left:50%;bottom:22px;z-index:2;transform:translateX(-50%);font-size:11px;letter-spacing:.2em;color:#c9d0de;display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .4s}
 .scroll i{width:1px;height:34px;background:linear-gradient(var(--gold2),transparent);animation:drop 1.8s ease-in-out infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 .meter{position:absolute;z-index:2;right:20px;top:50%;width:2px;height:120px;margin-top:-60px;background:rgba(255,255,255,.15);border-radius:2px}
 .meter i{display:block;width:100%;height:0;background:var(--gold2);border-radius:2px}
-@media(max-width:699px){.film{height:420vh}.meter{display:none}.b1{bottom:12vh}}
-
-/* 浮かび上がる時、手前に起き上がる */
-.rv{transform:perspective(1200px) translateY(40px) rotateX(16deg);transform-origin:50% 0}
-
-/* カードを手で傾けられる立体に */
-.track{perspective:1400px}
-.tilt{transform-style:preserve-3d;will-change:transform;position:relative}
-.tilt h3,.tilt .big,.tilt .res,.tilt .v{transform:translateZ(36px)}
-.tilt .eyebrow,.tilt .calc{transform:translateZ(18px)}
-.tilt .glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
-  background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.35),rgba(255,255,255,0) 55%);mix-blend-mode:soft-light}
-.tilt:hover .glare{opacity:1}
-.card,.pane,.one .main,.one .mini,.value{box-shadow:0 1px 2px rgba(18,33,63,.06),0 12px 28px rgba(18,33,63,.08),0 30px 60px -20px rgba(18,33,63,.18)}
-.card.navy,.pane.navy{box-shadow:0 12px 28px rgba(18,33,63,.25),0 34px 70px -18px rgba(18,33,63,.45)}
-
-/* 業務アイコンを立体のボタンに */
-.ic .c{background:linear-gradient(145deg,#ffffff,#e6e8ee);box-shadow:6px 6px 14px rgba(18,33,63,.14),-6px -6px 14px rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.6)}
-.ic:hover .c{transform:translateY(-4px) rotateX(18deg);box-shadow:6px 14px 20px rgba(18,33,63,.18),-6px -6px 14px rgba(255,255,255,.9)}
-
-/* 診断の箱：奥に光の層 */
-.diag{background:radial-gradient(90% 120% at 85% 0%,#22386a 0%,#12213f 55%,#0c1830 100%);box-shadow:0 30px 70px -20px rgba(18,33,63,.55)}
-.diag:before{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;
-  background:conic-gradient(from 0deg,rgba(217,191,134,.0),rgba(217,191,134,.35),rgba(217,191,134,0) 40%);filter:blur(6px);animation:spin 14s linear infinite;pointer-events:none}
-.diag>*{position:relative}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* 最後の大見出しを押し出し文字に */
-.final h2{color:var(--navy);text-shadow:0 1px 0 #c9cfdb,0 2px 0 #bcc3d2,0 3px 0 #aeb6c7,0 4px 0 #a1aabd,0 5px 0 #949eb3,0 18px 26px rgba(18,33,63,.25)}
-.btn{box-shadow:0 4px 0 rgba(0,0,0,.18),0 10px 20px rgba(18,33,63,.18);transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(0,0,0,.18),0 16px 28px rgba(18,33,63,.22)}
-.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18),0 4px 10px rgba(18,33,63,.18)}
-
-@media (prefers-reduced-motion: reduce){.rv{transform:none}.tilt h3,.tilt .big,.tilt .res,.tilt .v,.tilt .eyebrow,.tilt .calc{transform:none}.diag:before,.scroll i{animation:none}}
-
-/* 引継ぎ後の仕上げ：演出より操作と読みやすさを優先する */
-:root{--header-height:52px}
-:focus-visible{outline:3px solid #b08d4a;outline-offset:5px}
-.stage{top:var(--header-height);height:calc(100svh - var(--header-height));background:#08111f url('frames/f000.jpg?v=2') center/cover no-repeat}
-.b1{opacity:1}
-/* 明るい街でも文字が読めるように、文字の後ろだけ暗くぼかす */
-.beat .say{display:inline-block;padding:16px 30px;border-radius:22px;background:rgba(8,17,31,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 40px rgba(8,17,31,.35)}
-.beat h1,.beat .lead{text-shadow:0 2px 0 rgba(0,0,0,.3),0 4px 28px rgba(8,17,31,.9),0 0 60px rgba(8,17,31,.7)}
 .film-controls{position:absolute;z-index:3;top:20px;right:24px;display:flex;gap:10px;align-items:center}
-.film-controls a,.film-controls button{padding:10px 14px;border:1px solid #ffffff50;border-radius:999px;background:#08111fbf;color:#fff;font-size:12px;min-height:44px}
-.beat[aria-hidden="true"]{visibility:hidden}
-.beat .btn{max-width:100%;text-align:center;justify-content:center}
-.rv{opacity:1;transform:none}
-.reveal-ready .rv:not(.in){opacity:0;transform:perspective(1200px) translateY(40px) rotateX(16deg)}
-.one>*,.value>*{min-width:0}
-.fab{width:auto;height:48px;padding:0 16px;gap:10px;display:flex;border-radius:999px;bottom:calc(16px + env(safe-area-inset-bottom));right:16px}
-.fab .tip{position:static;opacity:1;transform:none;background:none;color:#fff;padding:0;box-shadow:none;font-size:12px}
-.fab svg{width:25px;height:25px}
+.film-controls a,.film-controls button{padding:10px 14px;border:1px solid #ffffff50;border-radius:999px;background:#08111fbf;color:#fff;font-size:12px;min-height:44px;display:inline-flex;align-items:center}
 .film.is-static{height:auto}
 .film.is-static .stage{position:relative;top:0;height:auto;min-height:calc(100svh - var(--header-height));display:flex;flex-direction:column;justify-content:center;gap:40px;padding:100px 0 110px}
 .film.is-static #filmCv,.film.is-static .b2,.film.is-static .b3,.film.is-static .scroll,.film.is-static .meter{display:none}
 .film.is-static .b1,.film.is-static .b4{position:relative;top:auto;bottom:auto;width:100%;opacity:1!important;transform:none!important;visibility:visible;pointer-events:auto}
-.film.is-static .b1 h1{font-size:clamp(42px,8vw,88px)}
 .film.is-static .stage:after{background:#08111f80}
 .motion-reduced .rv,.motion-reduced.reveal-ready .rv:not(.in){opacity:1;transform:none;transition:none}
-.motion-reduced .diag:before,.motion-reduced .scroll i{animation:none}
-.motion-reduced .result.show{animation:none}
+.motion-reduced .scroll i{animation:none}
 .motion-reduced .tilt,.motion-reduced .tilt>*{transform:none!important;transition:none!important}
 .motion-reduced{scroll-behavior:auto}
 @media(max-width:699px){
+  .film{height:420vh}.meter{display:none}.b1{bottom:12vh}
   .film-controls{top:14px;right:16px;left:16px;justify-content:space-between}
-  .beat{padding:0 20px}.b4{top:26%}.b3{bottom:24%}
-  .beat .lead{font-size:clamp(22px,6.4vw,34px)}
-  .beat .links{gap:18px}.beat .btn{font-size:14px;padding:14px 20px}
-  .fab{height:46px;padding:0 13px}.fab .tip{font-size:11px}
-  .cost{font-size:13px}.cost td b{font-size:15px}.cost td:first-child{white-space:normal}
+  .beat{padding:0 20px}.b4{top:22%}.b3{bottom:24%}
+  .beat .lead{font-size:clamp(26px,7.4vw,36px)}
+  .beat .links{gap:18px}.beat .btn{font-size:15px;padding:15px 20px}
+  .beat h1{font-size:clamp(22px,6.6vw,30px)}
+  .btn.big{font-size:16px;padding:16px 18px}
+  .fab{height:46px;padding:0 13px}
 }
+@media (prefers-reduced-motion: reduce){.rv,.reveal-ready .rv:not(.in){opacity:1;transform:none;transition:none}.card,.card:hover{transition:none;transform:none}html{scroll-behavior:auto}.scroll i{animation:none}}
 </style>
-<noscript><style>.film{height:auto}.stage{position:relative;top:0;height:auto;min-height:90svh;padding:110px 0}.beat{display:none}.beat.b1,.beat.b4{display:block;position:relative;top:auto;bottom:auto;opacity:1;margin-bottom:32px;pointer-events:auto}.film-controls,.scroll,.meter,#filmCv,#startBtn{display:none}</style></noscript>
+<noscript><style>.film{height:auto}.stage{position:relative;top:0;height:auto;min-height:90svh;padding:110px 0}.beat{display:none}.beat.b1,.beat.b4{display:block;position:relative;top:auto;bottom:auto;opacity:1;margin-bottom:32px;pointer-events:auto}.film-controls,.scroll,.meter,#filmCv{display:none}</style></noscript>
 </head>
 <body>
 
-<div class="ribbon">御社専属AI参謀を作る体験キットを、公式LINEで無料配布。<a href="#gift">7つの教材を見る ›</a></div>
+<div class="ribbon">無料・1社1件。御社の仕事を1件、AI社員が代わりにやってお届けします。<a href="#flow">流れを見る ›</a></div>
 
 <header class="hdr">
   <div class="wrap">
     <a href="#top" class="logo">自社専門AI<b>｜</b>桂</a>
     <nav class="nav">
-      <a href="#loss">失っている時間</a><a href="#diag">3分診断</a><a href="#vs">何でも屋との違い</a><a href="#gift">LINE特典</a><a href="#product">導入の流れ</a><a href="#faq">よくある質問</a>
+      <a href="#pick">選べる仕事</a><a href="#flow">流れ</a><a href="#sample">届くものの見本</a><a href="#faq">よくある質問</a>
     </nav>
-    <a href="#diag" class="cta">診断する</a>
+    <a href="#" class="cta lineLink">LINEでまかせる</a>
   </div>
 </header>
 
@@ -312,19 +207,19 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 <!-- 1 1画面目 -->
 <section class="film" id="film">
   <div class="stage">
-    <div class="film-controls"><a href="#diag">診断へスキップ ↓</a><button id="motionBtn" type="button" aria-pressed="false">動きを止める</button></div>
+    <div class="film-controls"><a href="#pick">先へスキップ ↓</a><button id="motionBtn" type="button" aria-pressed="false">動きを止める</button></div>
     <canvas id="filmCv" aria-hidden="true"></canvas>
     <div class="beat b1" data-in="0" data-out=".2">
-      <h1>自社専門AI<small>全国の会社に、職場からオンラインで。御社専門のAI導入を支援します。</small></h1>
+      <h1>御社の仕事を1件、<br>AI社員が代わりにやります。<small>無料・1社1件。やるのは、3分のフォームだけ。</small></h1>
     </div>
     <div class="beat b2" data-in=".26" data-out=".44"><p class="say">夜9時。<br>まだ、灯りが消えない。</p></div>
-    <div class="beat b3" data-in=".52" data-out=".72"><p class="say">返信、見積、追客。<br><span>社長の手が、雑務で埋まっていく。</span></p></div>
+    <div class="beat b3" data-in=".52" data-out=".72"><p class="say">返信、紹介文、議事録。<br><span>社長の手が、後回しの仕事で埋まっていく。</span></p></div>
     <div class="beat b4" data-in=".8" data-out="9">
-      <p class="lead">人を雇わずに、<br>御社を知り尽くした右腕を。</p>
-      <p class="sub">浮いた人件費と時間で、次の一手を打てる会社へ。</p>
+      <p class="lead">その1件、<br>今夜はAI社員に。</p>
+      <p class="sub">桂が中身を確かめて、公式LINEでお届けします。</p>
       <div class="links">
-        <a class="btn" href="#diag">3分で、失っている時間を診断する →</a>
-        <a class="link lineLink" href="https://line.me/R/ti/p/%40543rhryb">公式LINEで相談する ›</a>
+        <a class="btn line lineLink" href="#">公式LINEで、仕事を1件まかせる →</a>
+        <a class="link" href="#sample">届くものの見本を見る ›</a>
       </div>
     </div>
     <div class="scroll" aria-hidden="true">SCROLL<i></i></div>
@@ -332,423 +227,120 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   </div>
 </section>
 
-<!-- オンライン相談の便益 -->
-<section class="sec gray" aria-labelledby="online-benefits">
-  <div class="wrap">
-    <h2 class="h2 rv" id="online-benefits">いつもの職場から、まず30分。<span>移動や大がかりな準備なしで、AI導入の相談を始められます。</span></h2>
-    <div class="one">
-      <div class="main rv">
-        <span class="eyebrow">全国オンライン対応</span>
-        <h3>3分で整理。必要なら、<br>30分で一緒に確かめる。</h3>
-        <ol class="flow">
-          <li>移動せず、いつもの職場から<span>全国どこからでもオンラインで相談できます。</span></li>
-          <li>立派な資料やAIの知識は不要<span>いちばん手放したい仕事を教えてください。可能なら実例を3つ、名前や電話番号を伏せてご用意ください。</span></li>
-          <li>まずは一つの業務から<span>3分診断で今の時間を整理し、30分診断で使い方と次の一歩を一緒に確認します。</span></li>
-        </ol>
-        <a class="btn navy" href="#diag">まずは3分診断を試す →</a>
-      </div>
-      <div class="side">
-        <div class="mini rv"><h4>相談のための移動は不要です。</h4><p>ご相談から導入・運用支援までオンラインで進めます。訪問が必要な場合は個別にご相談ください。</p></div>
-        <div class="mini rv"><h4>短い相談で、次の一歩を整理。</h4><p>30分診断では、実例を見ながら対象業務と必要な情報を確認します。契約は必須ではありません。</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 2 業務アイコン列 -->
-<nav class="icons" aria-label="AIに任せられる業務">
-  <a class="ic" href="#diag"><span class="c"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>問い合わせ<br>の返信</a>
-  <a class="ic" href="#diag"><span class="c"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span>見積・<br>書類づくり</a>
-  <a class="ic" href="#diag"><span class="c"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></span>追客の<br>連絡</a>
-  <a class="ic" href="#diag"><span class="c"><svg viewBox="0 0 24 24"><path d="M4 10v4h3l5 4V6L7 10z"/><path d="M16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg></span>SNS・<br>発信</a>
-  <a class="ic" href="#diag"><span class="c"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>予約・<br>日程調整</a>
-  <a class="ic" href="#diag"><span class="c"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span>議事録・<br>報告</a>
-  <a class="ic" href="#diag"><span class="c"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></span>入力・<br>集計</a>
-</nav>
-
-<!-- 3 失っている時間 -->
-<section class="sec gray" id="loss">
-  <div class="wrap"><h2 class="h2 rv">毎日、奪われています。<span>社長の1日から消えている時間。</span></h2></div>
+<!-- 2 選べる3つの仕事 -->
+<section class="sec gray" id="pick">
+  <div class="wrap"><h2 class="h2 rv">選べる仕事は、3つ。<span>いちばん手放したい1件を、まかせてください。</span></h2></div>
   <div class="shelf">
     <div class="arrows"><button data-dir="-1" aria-label="前へ">‹</button><button data-dir="1" aria-label="次へ">›</button></div>
     <div class="track">
-      <article class="card rv"><span class="eyebrow">問い合わせの返信</span><h3>1通に10分。<br>それが1日8通。</h3><p>文面を考え、物件や在庫を確かめ、言い回しを直す。返し終わる頃には、次が届いています。</p><div class="big">29<small>時間／月</small></div><div class="calc">10分 × 8通 × 22日</div></article>
-      <article class="card rv"><span class="eyebrow">追客の連絡</span><h3>送るつもりだった、<br>あの1通。</h3><p>見積のあと、内見のあと。忙しい日ほど後回しになり、そのまま他社に決まっていきます。</p><div class="big">18<small>時間／月</small></div><div class="calc">10分 × 5件 × 22日</div></article>
-      <article class="card rv"><span class="eyebrow">見積・書類づくり</span><h3>夜にずれ込む、<br>いつもの書類。</h3><p>前の書類を開いて、直して、また直す。中身はほとんど同じなのに、毎回ゼロから。</p><div class="big">11<small>時間／月</small></div><div class="calc">30分 × 週5件 × 4.3週</div></article>
-      <article class="card rv"><span class="eyebrow">議事録・報告</span><h3>話した内容を、<br>もう一度書く。</h3><p>打合せのメモを清書し、次にやることを書き出す。決まったことは、もう決まっているのに。</p><div class="big">7<small>時間／月</small></div><div class="calc">20分 × 1日1回 × 22日</div></article>
-      <article class="card navy rv"><span class="eyebrow">足すと</span><h3>年に、これだけ。</h3><p>4つの業務だけで、月65時間。人件費にすると、1年でこの金額が雑務に消えています。</p><div class="big">約101<small>万円／年</small></div><div class="calc">65時間 × 時給1,300円 × 12か月<sup>※1</sup></div></article>
+      <article class="card rv"><span class="eyebrow">問い合わせへの返信</span><h3>1通に10分。<br>それが1日8通。</h3><p>文面を考え、確かめ、言い回しを直す。返し終わる頃には、次が届いています。</p><div class="big">29<small>時間／月</small></div><div class="calc">10分 × 8通 × 22日<sup>※1</sup></div><div class="get"><b>届くもの</b>届いた問い合わせへの返信と、よくある質問への返信のひな形</div></article>
+      <article class="card rv"><span class="eyebrow">商品・サービスの紹介文</span><h3>書こうと思って、<br>もう3か月。</h3><p>ホームページ、チラシ、SNS。直したいのに、白紙を前に手が止まる。</p><div class="big">8<small>時間／月</small></div><div class="calc">1本1時間 × 月8本<sup>※1</sup></div><div class="get"><b>届くもの</b>御社の商品・サービスの紹介文（ホームページやチラシにそのまま使える形）</div></article>
+      <article class="card rv"><span class="eyebrow">打合せメモから議事録</span><h3>話した内容を、<br>もう一度書く。</h3><p>メモを清書し、次にやることを書き出す。決まったことは、もう決まっているのに。</p><div class="big">7<small>時間／月</small></div><div class="calc">20分 × 1日1回 × 22日<sup>※1</sup></div><div class="get"><b>届くもの</b>メモや書き起こしから、決まったこと・次にやることを整理した議事録</div></article>
+    </div>
+  </div>
+  <div class="wrap"><p class="plus rv">浮くのは、時間だけではありません。<span>人を増やさずに、後回しにしていた追客や、新しいお客様への連絡に手が届くようになります。</span></p></div>
+</section>
+
+<!-- 3 流れ -->
+<section class="sec" id="flow">
+  <div class="wrap">
+    <h2 class="h2 rv">あなたがやるのは、3分だけ。<span>あとは、AI社員と桂がやります。</span></h2>
+    <div class="flow3">
+      <div class="step rv"><div class="n">1</div><h3>公式LINEを<br>友だち追加</h3><p>30秒で、その仕事をAIに任せると月に何時間浮くかを計算できます。</p><span class="who">あなた・30秒</span></div>
+      <div class="step rv"><div class="n">2</div><h3>3分のフォームで、<br>仕事を1件まかせる</h3><p>選んだ仕事と、使ってよい会社の情報を書くだけ。立派な資料は要りません。</p><span class="who">あなた・3分</span></div>
+      <div class="step rv"><div class="n">3</div><h3>AI社員がつくり、<br>桂が確かめてお届け</h3><p>Claude・Codexが仕事を進め、桂が中身を確認してから、LINEのトークでお送りします。</p><span class="who ai">AI社員と桂</span></div>
+    </div>
+    <div class="flow-cta rv">
+      <a class="btn line big lineLink" href="#">公式LINEで、仕事を1件まかせる →</a>
+      <p class="under">無料・1社1件。順番に対応しているため、お届けまで数日いただくことがあります。</p>
     </div>
   </div>
 </section>
 
-<!-- 4 診断 -->
-<section class="sec gray" id="diag" style="padding-top:24px">
+<!-- 4 届くものの見本 -->
+<section class="sec gray" id="sample">
   <div class="wrap">
-    <h2 class="h2 rv">まず3分。<span>御社が失っている時間を、数字で。</span></h2>
-    <div class="diag rv" id="diagBox">
-      <div id="start">
-        <span class="eyebrow">無料・登録不要・全12問</span>
-        <h3>御社の雑務は、<br>月に何時間ありますか。</h3>
-        <p class="note">業務ごとに、会社全体で週どれくらいかかっているかを選ぶだけ。名前や連絡先は聞きません。正確でなくて大丈夫です。</p>
-        <div style="margin-top:28px"><button class="btn" id="startBtn">診断をはじめる →</button></div>
+    <h2 class="h2 rv">届くのは、こういうものです。<span>架空の工務店で試した、問い合わせへの返信の下書き。</span></h2>
+    <div class="sample">
+      <div class="ask rv">
+        <b>届いた問い合わせ（要約）</b>
+        築25年のお風呂を、ユニットバスに替えたいと考えています。費用と工期、現地調査について教えてください。
+        <p class="arrow">↓ 会社の情報（費用の目安・工期・対応エリア）をもとに、AI社員が下書き</p>
       </div>
-      <div id="quiz" hidden>
-        <div class="qcount" id="qcount"></div>
-        <div class="bar"><i id="bar"></i></div>
-        <div class="qtitle" id="qtitle"></div>
-        <div class="qhelp" id="qhelp"></div>
-        <div class="opts" id="opts"></div>
-        <div class="qnav"><button class="back" id="backBtn">‹ 戻る</button><button class="btn" id="nextBtn">次へ →</button></div>
-      </div>
-      <div class="result" id="result">
-        <span class="eyebrow">診断の結果</span>
-        <h3>御社の雑務は、毎月<br>これだけあります。</h3>
-        <div class="kpis">
-          <div class="kpi"><div class="k">いま雑務にかかっている時間（7業務の合計）</div><div class="v"><span id="rHours">0</span><small>時間／月</small></div></div>
-          <div class="kpi"><div class="k">人件費にすると（1年）</div><div class="v"><span id="rYenY">0</span><small>万円／年</small></div></div>
-          <div class="kpi"><div class="k">最初の1業務が半分になれば</div><div class="v"><span id="rTrial">0</span><small>時間／月</small></div></div>
-        </div>
-        <p class="qhelp" style="margin:-8px 0 18px">回答をもとにした概算です。「半分になれば」は試算で、実際に減る時間は、導入後に前と後を測ってお見せします。</p>
-        <div class="qhelp" style="margin-bottom:6px">時間がかかっている業務 TOP3（いちばん上が、最初に任せる候補）</div>
-        <ol class="top3" id="rTop"></ol>
-        <p class="want" id="rWant"></p>
-        <div class="gift">
-          <span class="eyebrow">公式LINE限定・無料</span>
-          <h4>診断結果を相談し、<br>AI参謀キットを受け取る。</h4>
-          <ul>
-            <li>事業理解インタビューからAI参謀の起動・比較体験まで。7つの教材を初日からすべて使えます</li>
-            <li>返信・説明文・議事録に使える「AI指示書10」も付録に</li>
-            <li>1週間の案内に沿って、自社の情報を入れたAIを仕事ひとつで試せます</li>
-          </ul>
-          <a class="btn line" id="lineBtn" href="#" target="_blank" rel="noopener">LINEで結果を送り、キットを受け取る →</a>
-          <p class="tiny">ボタンを押すとLINEが開き、診断の結果が入力された状態になります。そのまま送信してください。しつこい営業はしません。</p>
-        </div>
-        <div style="margin-top:18px"><button class="back" id="retryBtn" style="color:#c9d0de;font-size:14px">もう一度診断する</button></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 5 何でも屋と専門 -->
-<section class="sec" id="vs">
-  <div class="wrap">
-    <h2 class="h2 rv">何でも屋のAIと、御社専門のAI。<span>違いは、知っているかどうか。</span></h2>
-    <div class="q rv" style="background:var(--bg2);border-radius:18px;padding:18px 20px;font-size:14.5px;margin-bottom:18px"><b style="display:block;font-size:12px;color:var(--mute);margin-bottom:4px">届いた問い合わせ（例：不動産会社）</b>3LDKの中古マンションを探しています。子どもが小学生なので学校に近いところがいいです。予算は2,500万円くらいです。週末に見られる物件はありますか？</div>
-    <div class="vs">
       <div class="pane rv">
-        <h3>何でも屋のAI</h3>
-        <div class="tag">無料のChatGPTに「返信を書いて」と頼んだ場合</div>
-        <div class="out" data-type="generic"></div>
-        <div class="verdict">丁寧だが、どの会社が書いても同じ。次の一歩が決まらない。</div>
-      </div>
-      <div class="pane navy rv">
-        <h3>御社専門のAI</h3>
-        <div class="tag">会社のこと・ルール・良い返信の例を入れたAIに、同じ頼み方をした場合</div>
-        <div class="out" data-type="expert"></div>
-        <div class="verdict">担当者の名前、地域、次に聞くべきこと。空き状況など、確かめが要ることは言い切らない。確認して送るだけ。</div>
+        <div class="tag">件名：Re: ユニットバスへの交換について（費用・工期・現地調査）</div>
+        <div class="out">お問い合わせありがとうございます。みどり工務店です。
+
+築25年のお風呂をユニットバスに替えるご相談について、お答えします。
+・費用：ユニットバス交換は80万〜150万円で承ることが多いです。
+・工期：4〜5日ほどで、そのうちお風呂をお使いいただけないのは3日ほどです。
+・現地調査とお見積もり：無料です。
+
+実際の金額は、今のお風呂の状態やご希望の内容で変わります。ご自宅を拝見したうえで、あらためてご案内します。対応エリアは市内と隣の2市ですので、お住まいの地域をお知らせください。
+現地調査には、<mark>【要確認：うかがえる日時の候補】</mark>でおうかがいできます。ご都合のよい日をお知らせください。</div>
+        <div class="verdict">会社の情報にないこと（空いている日など）は、AIが勝手に決めません。印をつけて残すので、そこだけ書き足して送れます。</div>
       </div>
     </div>
-    <p class="vs-foot rv">この「知っている状態」をつくり、1つの業務に入れる。<br>日々変わる情報の取り込み方・更新方法も、御社の環境に合わせて設計します。</p>
+    <p class="sample-foot rv">同じものが、御社の問い合わせ・御社の言葉で届きます。<sup>※2</sup></p>
   </div>
 </section>
 
-<!-- 6 LINE特典 -->
-<section class="sec gray" id="gift">
-  <div class="wrap"><h2 class="h2 rv">御社専属AI参謀、お試し構築キット。<span>会社の事情を伝えると、答えはどう変わる？</span></h2></div>
-  <div class="shelf">
-    <div class="arrows"><button data-dir="-1" aria-label="前へ">‹</button><button data-dir="1" aria-label="次へ">›</button></div>
-    <div class="track">
-      <article class="card rv"><span class="eyebrow">聞き取る・まとめる・起動する</span><h3>御社の事情を知る<br>AI参謀をつくる</h3><p>事業理解インタビュー、会社情報・現在地・目標のシート、AI参謀の起動指示書。AIとの会話で、仕事に必要な背景を整理します。</p><div class="big">3<small>つの準備教材</small></div><div class="calc">白紙を埋める前に、AIが1問ずつ聞き取り</div></article>
-      <article class="card rv"><span class="eyebrow">比べる・使う・測る・共有する</span><h3>自社の仕事で、<br>違いを確かめる</h3><p>背景あり・なしの比較と完成見本、3つの実践指示書、業務選定・実測シート、社員向け手順書。いつもの仕事ひとつで使い心地を確かめます。</p><div class="big">4<small>つの実践教材</small></div><div class="calc">付録：返信・説明文・議事録などのAI指示書10</div></article>
-      <article class="card navy rv"><span class="eyebrow">教材は初日からすべて公開</span><h3>1週間の案内で、<br>最初の仕事まで。</h3><p>準備から比較、実践、情報更新まで順番にご案内。無料体験では、入力した時点の情報をAIに渡して試します。状況が変わった時の手動更新例も付いています。</p><div class="big">7<small>日間の案内</small></div><div class="calc">読むだけで終わらず、御社の1業務で試す</div></article>
-    </div>
-  </div>
-  <div class="wrap" style="padding-bottom:56px"><a class="btn navy lineLink" href="https://line.me/R/ti/p/%40543rhryb">公式LINEでAI参謀キットを受け取る →</a></div>
-</section>
-
-<!-- 7 1対1 -->
-<section class="sec">
+<!-- 5 誰がやるか -->
+<section class="sec" id="who">
   <div class="wrap">
-    <h2 class="h2 rv">移動せず、いつもの職場から。<span>30分のオンライン診断で、御社の業務を一緒に見ます。</span></h2>
-    <div class="one">
-      <div class="main rv">
-        <span class="eyebrow">全国対応・30分診断・オンライン</span>
-        <h3>体験した業務をもとに、<br>御社の最初の一歩を決めます。</h3>
-        <ol class="flow">
-          <li>キットを試した結果と、御社の現在地を確認する<span>使えたところ・詰まったところ・目指す状態を整理します</span></li>
-          <li>いちばん時間を取られている業務を、一緒に計算する<span>件数と1件の時間から、月と年の金額をその場で出します</span></li>
-          <li>「いまのやり方」「自分で設定したAI」「御社専門のAI」を、目の前で見比べる<span>御社に実際に届いた文面3つ（よくあるもの・情報が足りないもの・例外）で試します</span></li>
-        </ol>
-        <a class="btn navy lineLink" href="https://line.me/R/ti/p/%40543rhryb">公式LINEで申し込む →</a>
-      </div>
-      <div class="side">
-        <div class="mini rv"><h4>契約は必須ではありません。</h4><p>見るだけでも大丈夫です。ご希望があれば、導入をご案内します。進めるかどうかは、数字を見てから決めてください。</p></div>
-        <div class="mini rv"><h4>AIのことは、分からないままで大丈夫です。</h4><p>設定も、指示書も、仕組みも、こちらでつくります。御社にお願いするのは、聞き取りの30分と、実際の文面をいくつか見せていただくこと、使ってみての確認です。</p></div>
-      </div>
+    <h2 class="h2 rv">確かめるのは、桂です。<span>AIに任せきりにせず、人の目を通してからお届けします。</span></h2>
+    <div class="who-box">
+      <article class="card navy rv"><span class="eyebrow">実務家</span><h3>毎日、AIで<br>仕事を回しています。</h3><p>学校法人でマーケティングリーダーを務め、LP制作や配信の文面づくりに、毎日AIを使っています。</p><div class="big">180→271<small>人</small></div><div class="calc">集客の申込数：前年度（年間）180人 → 今年度（途中）271人<sup>※3</sup></div></article>
+      <article class="card rv"><span class="eyebrow">自分の事業でも</span><h3>営業の準備も、<br>AI社員に任せています。</h3><p>営業先の調べもの、LPづくり、LINEの原稿。自分の事業でAI社員に任せ、どこを人が確かめれば仕事として出せるかを、毎日試しています。御社にお届けするのも、その同じやり方です。</p></article>
     </div>
   </div>
 </section>
 
-<!-- 8 導入と料金 -->
-<section class="sec gray" id="product">
-  <div class="wrap"><h2 class="h2 rv">自社専門AIの導入。<span>1つの業務から、3〜4週間で。</span></h2></div>
-  <div class="shelf">
-    <div class="arrows"><button data-dir="-1" aria-label="前へ">‹</button><button data-dir="1" aria-label="次へ">›</button></div>
-    <div class="track">
-      <article class="card rv"><span class="eyebrow">STEP 1・30分</span><h3>聞き取り</h3><p>任せる1業務の、今のやり方・件数・実際の文面を伺います。ここで測った時間が「前」の数字になります。</p><div class="big">30<small>分</small></div></article>
-      <article class="card rv"><span class="eyebrow">STEP 2</span><h3>御社専門に<br>仕上げる</h3><p>Claude Code（Anthropic社のAI）に、御社のこと・ルール・良い例を入れ、その業務の専門にします。AIを一から開発するのではありません。</p><div class="big">1<small>業務</small></div></article>
-      <article class="card rv"><span class="eyebrow">STEP 3・30分</span><h3>使い方をお伝えする</h3><p>担当の方がひとりで使えるよう、30分でお伝えし、その場で3件を一緒に処理します。下書きはAI、確認して送るのは人です。</p><div class="big">30<small>分</small></div></article>
-      <article class="card rv"><span class="eyebrow">STEP 4・2週間</span><h3>運用して、<br>前と後を比べる</h3><p>実際に使いながら、ずれた所を直します。2週目に同じ業務の時間をもう一度測り、どれだけ減ったかをお見せします。</p><div class="big">2<small>週間</small></div></article>
-      <article class="card navy rv"><span class="eyebrow">導入</span><h3>自社専門AIの導入</h3><p>1業務・3〜4週間。STEP 1〜4の準備・構築・練習・2週間の運用を含みます。情報更新の連携範囲は、御社の環境と必要な対応を確認して決めます。</p><div class="big">10<small>万円（一括）</small></div><div class="calc">1業務あたり。別にAIの利用料（月額）がかかります<sup>※4</sup>。2つ目以降の業務も、同じ流れで増やせます</div></article>
-      <article class="card rv"><span class="eyebrow">選べます</span><h3>自社専門AIの保守</h3><p>使っていて困った時のLINEでの対応、指示書の手直し、毎月のレポート（戻った時間）、次に任せる業務のご提案。2週間の運用のあとに、続けるかどうかを選べます。</p><div class="big">月2<small>万円</small></div><div class="calc">入らなくても、導入した仕組みはそのまま使えます</div></article>
-    </div>
-  </div>
-</section>
-
-<!-- 9 取り戻す時間を金額で -->
-<section class="sec gray" style="padding-top:8px">
-  <div class="wrap">
-    <h2 class="h2 rv">取り戻す時間と、かかる費用。<span>1年で、並べて見てください。</span></h2>
-    <div class="value rv">
-      <div>
-        <span class="eyebrow" id="valLabel">1業務で、月20時間が戻った場合（試算）</span>
-        <p class="eq"><b id="valHours">20</b>時間 × 時給<b>1,300</b>円<sup>※1</sup> × <b>12</b>か月</p>
-        <div class="res"><span id="valYen">31</span><small>万円分の時間／年</small></div>
-        <p class="cmp">この時間を、雑務ではなく<b>本業</b>に。</p>
-        <p class="note2">時間の価値は、給与や外注費がそのまま減るという意味ではありません。戻った時間を何に使うかで、価値が決まります。</p>
-      </div>
-      <div>
-        <table class="cost">
-          <tr><th></th><th>1年目にかかる費用</th></tr>
-          <tr><td>導入だけ</td><td><b>10万円</b>＋AIの利用料<sup>※4</sup></td></tr>
-          <tr><td>導入＋保守<br><span class="opt">保守は選べます</span></td><td><b>34万円</b>＋AIの利用料<sup>※4</sup><br><span style="font-size:12.5px;color:var(--mute)">導入10万円＋保守 月2万円×12か月</span></td></tr>
-        </table>
-        <p class="note2">導入だけで十分に回る会社には、保守はおすすめしません。会社のルールや商品がよく変わる、使いながら直し続けたい、という会社に向いています。<br>更新連携の対象情報源・反映タイミング・人の確認範囲は、導入前に個別に確認します。あらゆる情報の自動更新や、無制限の連携を含むものではありません。<br>上の診断をすると、時間の数字が御社の「最初の1業務」の試算に置き換わります。</p>
-        <div style="margin-top:14px"><a class="link" href="#diag">御社の数字で計算する ›</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 10 ここで頼む理由 -->
-<section class="sec">
-  <div class="wrap"><h2 class="h2 rv">ここで頼む理由。<span>払う前に、全部お見せします。</span></h2></div>
-  <div class="shelf">
-    <div class="arrows"><button data-dir="-1" aria-label="前へ">‹</button><button data-dir="1" aria-label="次へ">›</button></div>
-    <div class="track">
-      <article class="card navy rv"><span class="eyebrow">実務家</span><h3>毎日、AIで<br>仕事を回しています。</h3><p>学校法人でマーケティングリーダーを務め、LP制作や配信の文面づくりに、毎日AIを使っています。</p><div class="big">180→262<small>人</small></div><div class="calc">集客の申込数：前年度（年間）180人 → 今年度（途中）262人<sup>※2</sup></div></article>
-      <article class="card rv"><span class="eyebrow">教えるだけではない</span><h3>動くところまで、<br>つくります。</h3><p>使い方を教えて終わり、相談に乗って終わり、ではありません。御社の業務に入れて、2週間運用し、時間が減ったことを数字で確かめます。</p></article>
-      <article class="card rv"><span class="eyebrow">払う前に</span><h3>導入を決める前に、<br>使い心地を確かめる。</h3><p>まず無料の体験キットで、御社の背景を入れたAIをお試しください。30分診断では対象業務と必要な情報を整理し、導入範囲・条件を確認してからご検討いただけます。</p></article>
-      <article class="card rv"><span class="eyebrow">全国対応</span><h3>地域を問わず、<br>オンラインで伴走。</h3><p>相談から導入・運用支援までオンラインで対応。相談のための移動は不要です。画面を見ながら、御社の仕事に合わせて一緒に進めます。見積書・請求書もきちんとお出しします。</p></article>
-    </div>
-  </div>
-</section>
-
-<!-- 11 FAQ -->
+<!-- 6 FAQ -->
 <section class="sec gray" id="faq">
   <div class="wrap faq">
     <h2 class="h2 rv">よくあるご質問。</h2>
-    <details><summary>ChatGPTなら、無料で自分でもできるのでは？</summary><p>できます。ChatGPTやClaudeには、会社の資料や指示を保存しておける機能もあります。自分で設定して回せる方は、それで十分です。まずは無料の「御社専属AI参謀 お試し構築キット」をお試しください。<br>こちらにお任せいただく違いは、どの業務から入れるかの見極め、良い例・悪い例と確認の手順づくり、そして担当の方がひとりで使えるようになるまでの2週間の運用です。30分診断では、御社が自分で設定した場合とも見比べます。</p></details>
-    <details><summary>AIの答えは、本当に正しいですか？</summary><p>AIは間違えることがあります。だから、AIは下書きまで、確認して送るのは人、という形で入れます。空き状況や金額など、確かめが必要なことは言い切らないよう、指示書の中で決めておきます。</p></details>
-    <details><summary>お客様の情報が漏れないか心配です。</summary><p>お客様の名前や電話番号は伏せて使う形にし、そのルールを使い方と一緒にお伝えします。最初は、個人情報を使わない業務から始めます。</p></details>
-    <details><summary>AIのことが全く分からなくても大丈夫ですか？</summary><p>大丈夫です。どの業務を任せるかを一緒に決め、設定も仕組みもこちらでつくります。導入後は、社員の方が使えるようになるまでお伝えします。</p></details>
-    <details><summary>費用はどれくらいかかりますか？</summary><p>診断、7教材とAI指示書10付録を含む体験キット、7日間の案内は無料です。自社専門AIの導入は1業務10万円（一括）、保守は月2万円で、保守に入るかは2週間の運用のあとに選べます。導入ではClaude（Anthropic社のAI）を使うため、別にClaudeの利用料（月額）がかかります。金額はプランと使う人数で変わるので、30分診断でご案内します。</p></details>
-    <details><summary>LINEに登録したら、営業の連絡が続きますか？</summary><p>しつこい営業はいたしません。登録時に体験キットをお届けし、その後1週間、準備・比較・実践・情報更新の取り組み方をご案内します。ご希望の方には30分診断をご案内します。不要になったら、いつでもブロックしていただけます。</p></details>
-    <details><summary>対応している地域はどこですか？</summary><p>全国の事業者にオンラインでご相談・導入支援を行います。相談のための移動は不要です。画面を見ながら進められ、訪問が必要な場合は個別にご相談ください。</p></details>
+    <details><summary>本当に無料ですか？</summary><p>はい、1社1件まで無料です。お届けしたものは、そのまま御社でお使いください。あとから請求することはありません。</p></details>
+    <details><summary>なぜ無料なのですか？</summary><p>AIで何ができるかは、説明を聞くより、自分の会社の仕事が片づいた実物を見る方が早いからです。使ってみて「この仕事が毎回こうなったら」と思われたら、その時にご相談ください。</p></details>
+    <details><summary>あとで営業の連絡が続きませんか？</summary><p>しつこい営業はしません。お届けのほかに、数通ご案内をお送りすることがあります。不要になったら、いつでもブロックしていただけます。</p></details>
+    <details><summary>会社やお客様の情報は大丈夫ですか？</summary><p>フォームには、使ってよい会社の情報だけを書いてください。問い合わせの例を送る時は、お客様の名前や電話番号を伏せてください。</p></details>
+    <details><summary>AIが間違えたら？</summary><p>AIは間違えることがあります。だから、桂が中身を確かめてからお届けします。空いている日など御社にしか分からないことは、AIが決めずに印をつけて残します。送る前に、御社の目でも確かめてください。</p></details>
   </div>
 </section>
 
-<!-- 12 最後 -->
+<!-- 7 最後 -->
 <section class="final">
-  <h2 class="rv">まず3分。</h2>
-  <p class="rv">答えるだけで、御社が失っている時間がわかります。</p>
-  <a class="btn navy rv" href="#diag">失っている時間を診断する →</a>
+  <h2 class="rv">まず、1件。</h2>
+  <p class="rv">無料・1社1件。やるのは、3分のフォームだけです。</p>
+  <a class="btn line big rv lineLink" href="#">公式LINEで、仕事を1件まかせる →</a>
 </section>
 
 </main>
 
-<!-- 13 脚注 -->
 <footer class="foot">
   <div class="wrap">
     <ol>
-      <li>人件費は、時給1,300円（パート・アルバイト募集時の全国平均時給、2025年。マイナビキャリアリサーチLab）で計算しています。「毎日、奪われています。」の件数と時間は、説明のための例です。</li>
+      <li>件数と時間は、説明のための例です。</li>
+      <li>見本は、架空の工務店の情報で試したものです（2026年10月）。実際の内容は、いただいた情報によって変わります。</li>
       <li>申込数は、桂が学校法人で担当している集客の実績です（今年度は年度の途中の数字）。AIだけによる成果ではありません。</li>
-      <li>診断の結果は、選んだ回答（週あたりの時間×4.3週）をもとにした概算です。「半分になれば」は説明のための試算で、実際に減る時間は業務の内容と件数で変わります。導入では、前と後の時間を実際に測ってお見せします。</li>
-      <li>AIの利用料は、Claudeのプランと使う人数で変わります。すでにお使いのAIがあれば、それを使えるかも確かめます。</li>
     </ol>
     <p class="copy">© 自社専門AI｜桂</p>
   </div>
 </footer>
 
-<a class="fab lineLink" href="https://line.me/R/ti/p/%40543rhryb" aria-label="公式LINEで相談する"><span class="tip">公式LINEで相談する</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8.1-6C21.3 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></a>
+<a class="fab lineLink" href="#" aria-label="公式LINEで、仕事を1件まかせる"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8.1-6C21.3 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>1件まかせる</a>
 
 <script>
 /* ===== 設定（ここだけ書き換える） ===== */
 const LINE_BASIC_ID = "@543rhryb";   // 公式LINEのベーシックID（@から始まる）
 
-
-const HOURLY_YEN = 1300;            // 人件費換算の時給
-
-/* ===== 見比べの下書き（どちらも同じ頼み方でAIが書いたもの） ===== */
-const DRAFTS = {
-  generic: "お問い合わせいただき、誠にありがとうございます。\nご希望の条件（3LDK・中古マンション・ご予算2,500万円程度・小学校に近いエリア）にて、物件をお探しいたします。\n週末の内見につきましても、対応可能でございます。\n詳細を確認のうえ、改めてご連絡させていただきます。\n何卒よろしくお願い申し上げます。",
-  expert: "お問い合わせありがとうございます。〇〇不動産の山本です。\n\n3LDK・2,500万円前後・小学校の近く、というご条件ですと、△△小学校区と□□小学校区に候補がございます。最新の空き状況を確かめてから、候補をお送りします。\n\nあわせて、3点だけ教えてください。\n① お車は何台お持ちですか（駐車場の有無で候補が変わります）\n② お引っ越しの時期のご希望\n③ 週末の内見は、ご都合のよい日時を2つほど\n\nいただいた日時で、こちらから調整してご連絡します。"
-};
-
-/* ===== 業務の定義 ===== */
-const TRIAL_RATE = .5;              // 「半分になれば」の試算（実績ではない。導入では前後を実測する）
-const TASKS = {
-  inquiry: { name: "問い合わせ・電話・メールの返信", how: "よくある質問への一次返信をAIが下書きし、人は判断が要るものだけに対応" },
-  docs:    { name: "見積・請求・提案書などの書類づくり", how: "ひな形と過去の書類をもとに、AIが下書きを作成。人は確認して直す" },
-  follow:  { name: "お客様への追客・連絡", how: "問い合わせ後の連絡文をAIが下書きし、送り忘れによる取りこぼしを防ぐ" },
-  sns:     { name: "SNS・チラシ・ブログの発信", how: "投稿文やチラシの文面をAIが下書き。ネタ出しも任せられる" },
-  booking: { name: "予約・日程調整", how: "予約の確認や日程の候補を返す文面をAIが下書きし、やりとりの手間を減らす" },
-  minutes: { name: "議事録・日報・報告書", how: "メモや書き起こしから、AIが議事録・日報・報告書の下書きを作成" },
-  data:    { name: "データ入力・集計", how: "メモや書類から表に入れる形をAIが整え、転記の手間を減らす" }
-};
-const HOUR_OPTS = [
-  { label: "ほとんどない", v: 0 }, { label: "週1時間くらい", v: 1 }, { label: "週2〜3時間", v: 2.5 },
-  { label: "週4〜6時間", v: 5 }, { label: "週7時間以上", v: 8 }
-];
-const Q = [
-  { id: "industry", t: "業種を教えてください", opts: ["不動産・住宅", "建設・リフォーム", "医療・歯科・治療院", "美容・サロン", "飲食", "宿泊・観光", "小売・EC", "士業・コンサル", "教室・スクール", "その他"] },
-  { id: "size", t: "従業員数（社長を含む）は？", opts: ["1〜4名", "5〜9名", "10〜29名", "30名以上"] },
-  ...Object.entries(TASKS).map(([k, x]) => ({ id: k, t: `「${x.name}」に、会社全体で週どれくらい時間を使っていますか？`, help: "社長と従業員の時間を合わせた感覚で大丈夫です", hours: true })),
-  { id: "letgo", t: "いちばん手放したい作業はどれですか？", opts: Object.values(TASKS).map(x => x.name) },
-  { id: "aiuse", t: "いま、AIを仕事で使っていますか？", opts: ["使っていない", "少し試したことがある", "一部の業務で使っている", "日常的に使っている"] },
-  { id: "want", t: "空いた時間で、本当にやりたいことは？", help: "いくつでも選べます", multi: true, opts: ["新しいお客様を増やす", "今のお客様との時間を増やす", "新しい商品・サービスをつくる", "社員の育成・採用", "社長自身の休息・家族との時間", "会社の将来を考える時間"] }
-];
-
 const $ = s => document.getElementById(s);
 const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
 let reduce = motionPreference.matches;
-const A = {}; let i = 0, advanceTimer = 0;
 
 /* LINEのリンク */
 const lineAdd = `https://line.me/R/ti/p/${encodeURIComponent(LINE_BASIC_ID)}`;
 document.querySelectorAll(".lineLink").forEach(a => { a.href = lineAdd; a.target = "_blank"; a.rel = "noopener"; });
-
-
-
-/* 診断 */
-function render() {
-  clearTimeout(advanceTimer);
-  const q = Q[i];
-  $("bar").style.width = `${(i / Q.length) * 100}%`;
-  $("qcount").textContent = `Q${i + 1} ／ ${Q.length}`;
-  $("qtitle").textContent = q.t;
-  $("qhelp").textContent = q.help || "";
-  const box = $("opts"); box.innerHTML = "";
-  const list = q.hours ? HOUR_OPTS.map(o => o.label) : q.opts;
-  list.forEach((label, idx) => {
-    const b = document.createElement("button");
-    b.className = "opt"; b.type = "button"; b.textContent = label;
-    const cur = A[q.id];
-    if (q.multi ? (cur || []).includes(label) : cur === (q.hours ? HOUR_OPTS[idx].v : label)) b.classList.add("on");
-    b.setAttribute("aria-pressed", b.classList.contains("on"));
-    b.onclick = () => {
-      if (q.multi) {
-        const s = new Set(A[q.id] || []);
-        s.has(label) ? s.delete(label) : s.add(label);
-        A[q.id] = [...s]; b.classList.toggle("on");
-        b.setAttribute("aria-pressed", s.has(label));
-        $("nextBtn").disabled = !A[q.id].length;
-      } else {
-        A[q.id] = q.hours ? HOUR_OPTS[idx].v : label;
-        [...box.children].forEach(c => { c.classList.remove("on"); c.setAttribute("aria-pressed", "false"); });
-        b.classList.add("on"); $("nextBtn").disabled = false;
-        b.setAttribute("aria-pressed", "true");
-        clearTimeout(advanceTimer);
-        const questionIndex = i;
-        advanceTimer = setTimeout(() => { if (i === questionIndex) next(); }, 220);
-      }
-    };
-    box.appendChild(b);
-  });
-  $("backBtn").style.visibility = i === 0 ? "hidden" : "visible";
-  const answered = q.multi ? (A[q.id] || []).length > 0 : A[q.id] !== undefined;
-  $("nextBtn").disabled = !answered;
-  $("nextBtn").textContent = (i === Q.length - 1 ? "結果を見る" : "次へ") + " →";
-  $("qtitle").tabIndex = -1;
-  $("qtitle").focus({preventScroll:true});
-}
-function next() {
-  clearTimeout(advanceTimer);
-  const q = Q[i];
-  if (q.multi ? !(A[q.id] || []).length : A[q.id] === undefined) return;
-  if (i < Q.length - 1) { i++; render(); } else showResult();
-}
-
-function countUp(el, to, dec = 0) {
-  if (reduce) { el.textContent = to.toLocaleString(undefined, { maximumFractionDigits: dec }); return; }
-  const t0 = performance.now(), d = 1200;
-  const step = t => {
-    const p = Math.min(1, (t - t0) / d), e = 1 - Math.pow(1 - p, 3);
-    el.textContent = (to * e).toLocaleString(undefined, { minimumFractionDigits: dec, maximumFractionDigits: dec });
-    if (p < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
-
-function setValue(hours) {
-  const yen = hours * HOURLY_YEN * 12;
-  $("valHours").textContent = hours;
-  $("valYen").textContent = Math.round(yen / 10000);
-}
-
-function showResult() {
-  $("bar").style.width = "100%";
-  // いまかかっている時間（回答×4.3週）。並びは「手放したい作業」を先頭に、あとは時間の多い順
-  const rows = Object.entries(TASKS).map(([k, x]) => ({ k, ...x, h: (A[k] || 0) * 4.3 }))
-    .sort((a, b) => (b.name === A.letgo) - (a.name === A.letgo) || b.h - a.h);
-  const total = rows.reduce((s, r) => s + r.h, 0);
-  const hours = Math.round(total);
-  const yenY = Math.round(total * HOURLY_YEN * 12 / 10000);
-
-  let top = rows.filter(r => r.h > 0 || r.name === A.letgo).slice(0, 3);
-  const first = top[0] || rows[0];
-  const trial = Math.round(first.h * TRIAL_RATE * 10) / 10;
-  $("rTop").innerHTML = top.map(r =>
-    `<li><span class="h">${r.h > 0 ? "いま約" + Math.round(r.h) + "時間／月" : ""}</span><b>${r.name}</b><span class="how">${r.how}</span></li>`).join("");
-  const want = (A.want || []).join("」「");
-  $("rWant").innerHTML = trial > 0
-    ? `最初の1業務で戻る時間を、<b>「${want}」</b>に。<br>それが、御社がAIを入れる本当の目的です。`
-    : `いちばん手放したい作業の時間が少なめです。30分診断で、件数と1件の時間から一緒に数え直しましょう。<br>戻った時間は<b>「${want}」</b>に。`;
-
-  const msg = [
-    "【AI診断の結果】",
-    `業種：${A.industry}／従業員：${A.size}`,
-    `いま雑務にかかっている時間：約${hours}時間/月（人件費 年約${yenY}万円・回答からの概算）`,
-    `最初の1業務の候補：${first.name}（いま約${Math.round(first.h)}時間/月）`,
-    `TOP3：${top.map(r => r.name).join("、")}`,
-    `手放したい作業：${A.letgo}`,
-    `AIの利用：${A.aiuse}`,
-    `空いた時間でやりたいこと：${(A.want || []).join("、")}`,
-    "",
-    "AI参謀キットを受け取ります。"
-  ].join("\n");
-  $("lineBtn").href = `https://line.me/R/oaMessage/${encodeURIComponent(LINE_BASIC_ID)}/?${encodeURIComponent(msg)}`;
-
-  $("quiz").hidden = true;
-  $("result").classList.add("show");
-  $("diagBox").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-  countUp($("rHours"), hours); countUp($("rYenY"), yenY); countUp($("rTrial"), trial, 1);
-  if (trial > 0) { $("valLabel").textContent = `御社の診断：「${first.name}」が半分になった場合（試算）`; setValue(trial); }
-}
-
-$("startBtn").onclick = () => { $("start").hidden = true; $("quiz").hidden = false; render(); };
-$("nextBtn").onclick = next;
-$("backBtn").onclick = () => { if (i > 0) { i--; render(); } };
-$("retryBtn").onclick = () => {
-  clearTimeout(advanceTimer);
-  Object.keys(A).forEach(k => delete A[k]); i = 0;
-  $("valLabel").textContent = "1業務で、月20時間が戻った場合（試算）"; setValue(20);
-  $("result").classList.remove("show"); $("quiz").hidden = false; render();
-  $("diagBox").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-};
-document.querySelectorAll(".ic").forEach(a => a.addEventListener("click", () => {
-  if (!$("start").hidden) setTimeout(() => $("startBtn").click(), 500);
-}));
 
 /* 棚の左右ボタン */
 document.querySelectorAll(".shelf").forEach(sh => {
@@ -759,39 +351,18 @@ document.querySelectorAll(".shelf").forEach(sh => {
   });
 });
 
-/* 見比べ：下書きを打ち出す */
-function typeOut(el, text, speed) {
-  if (reduce) { el.textContent = text; return Promise.resolve(); }
-  return new Promise(res => {
-    let n = 0; const caret = document.createElement("span"); caret.className = "caret";
-    const tick = () => {
-      n += 2; el.textContent = text.slice(0, n); el.appendChild(caret);
-      if (n < text.length) setTimeout(tick, speed); else { caret.remove(); res(); }
-    };
-    tick();
-  });
-}
-let typed = false;
-const vsObs = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting && !typed) {
-    typed = true;
-    const g = document.querySelector('[data-type="generic"]'), x = document.querySelector('[data-type="expert"]');
-    typeOut(g, DRAFTS.generic, 22).then(() => typeOut(x, DRAFTS.expert, 22));
-  }
-}), { threshold: .35 });
-vsObs.observe(document.querySelector(".vs"));
-
 /* 下に送ると浮かび上がる */
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
 document.documentElement.classList.add("reveal-ready");
 document.querySelectorAll(".rv").forEach(el => io.observe(el));
-
-/* LINEボタンを一度だけ目立たせる */
-setTimeout(() => { const f = document.querySelector(".fab"); f.classList.add("hint"); setTimeout(() => f.classList.remove("hint"), 3500); }, 6000);
+// 監視が動かない環境でも文字が消えたままにならないよう、スクロールでも画面に入ったものを出す
+const revealVisible = () => document.querySelectorAll(".rv:not(.in)").forEach(el => { if (el.getBoundingClientRect().top < innerHeight * .92) el.classList.add("in"); });
+addEventListener("scroll", revealVisible, { passive: true });
+revealVisible();
 
 /* ===== 3D：カードを傾ける（マウスのある端末だけ） ===== */
 if (!reduce && matchMedia("(hover: hover)").matches) {
-  document.querySelectorAll(".card,.pane,.one .main,.one .mini,.value").forEach(el => {
+  document.querySelectorAll(".card,.step").forEach(el => {
     el.classList.add("tilt");
     const g = document.createElement("span"); g.className = "glare"; el.appendChild(g);
     el.addEventListener("pointermove", e => {
@@ -808,7 +379,7 @@ if (!reduce && matchMedia("(hover: hover)").matches) {
 
 /* ===== 1画面目：スクロールに合わせて映像をコマ送りする ===== */
 (function () {
-  const FRAMES = 120, src = k => `frames/f${String(k).padStart(3, "0")}.jpg?v=2`   // 画像を作り直したら v の数字を上げる（古い画像のキャッシュを避ける）;
+  const FRAMES = 120, src = k => `frames/f${String(k).padStart(3, "0")}.jpg?v=2`;   // 画像を作り直したら v の数字を上げる（古い画像のキャッシュを避ける）
   const film = $("film"), stage = film.querySelector(".stage"), cv = $("filmCv"), ctx = cv.getContext("2d");
   const beats = [...film.querySelectorAll(".beat")];
   const imgs = new Map(), pending = new Set(), failed = new Set();
