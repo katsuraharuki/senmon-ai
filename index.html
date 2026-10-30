@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>自社専門AI｜毎日奪われている時間を、取り戻す。</title>
+<title>自社専門AI｜人を雇わずに、御社を知り尽くした右腕を。</title>
 <meta name="description" content="全国オンライン対応。移動の手間なく、いつもの職場からAI導入を相談できます。まず3分診断で時間を整理し、必要なら30分で御社の業務を一緒に確かめます。">
+<link rel="preload" as="image" href="frames/f000.jpg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -41,15 +42,6 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .nav a:hover{color:#000}
 .hdr .cta{font-size:13px;background:var(--navy);color:#fff;padding:7px 16px;border-radius:999px}
 @media(min-width:900px){.nav{display:flex}}
-
-/* 1画面目 */
-.hero{padding:56px 0 24px}
-.hero .wrap{display:grid;gap:20px}
-.hero h1{font-size:clamp(56px,13vw,120px);font-weight:900;letter-spacing:-.03em;line-height:1.02}
-.hero h1 small{display:block;font-size:clamp(14px,2.4vw,17px);font-weight:500;color:var(--sub);letter-spacing:0;margin-top:14px}
-.hero .lead{font-size:clamp(22px,3.6vw,30px);font-weight:700;line-height:1.45}
-.hero .links{display:flex;flex-direction:column;gap:6px;margin-top:14px}
-@media(min-width:900px){.hero .wrap{grid-template-columns:1.1fr .9fr;align-items:end}.hero .side{text-align:right}.hero .links{align-items:flex-end}}
 
 /* 業務アイコン列 */
 .icons{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;padding:28px 20px 36px;max-width:var(--w);margin:0 auto;scrollbar-width:none}
@@ -201,7 +193,105 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes blink{50%{opacity:0}}
 @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}.card,.card:hover{transition:none;transform:none}html{scroll-behavior:auto}.pane .out .caret{animation:none}}
+
+/* ===== 3D ===== */
+/* 1画面目：スクロールで、夜の町から灯った窓、机のPC画面へ寄っていく映像（連番JPGをコマ送り） */
+.film{position:relative;height:520vh;background:#08111f;color:#fff}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#filmCv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage:after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 50%,rgba(8,17,31,0) 40%,rgba(8,17,31,.55) 100%),linear-gradient(to bottom,rgba(8,17,31,.35),rgba(8,17,31,0) 30%,rgba(8,17,31,0) 65%,rgba(8,17,31,.6))}
+.beat{position:absolute;z-index:2;left:0;right:0;padding:0 24px;max-width:var(--w);margin:0 auto;opacity:0;will-change:opacity,transform;pointer-events:none}
+.beat.on{pointer-events:auto}
+.beat h1{font-size:clamp(56px,13vw,132px);font-weight:900;letter-spacing:-.03em;line-height:1.02;text-shadow:0 2px 0 rgba(0,0,0,.25),0 18px 40px rgba(0,0,0,.55)}
+.beat h1 small{display:block;font-size:clamp(14px,2.4vw,18px);font-weight:500;color:#dfe4ee;letter-spacing:0;margin-top:16px;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.beat .say{font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1.4;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+.beat .say span{display:block;font-size:.55em;font-weight:500;color:#dfe4ee;margin-top:10px}
+.beat .lead{font-size:clamp(32px,5.6vw,60px);font-weight:900;line-height:1.3;letter-spacing:-.01em;text-shadow:0 4px 30px rgba(8,17,31,.8)}
+.beat .sub{margin-top:14px;font-size:clamp(15px,2.2vw,20px);font-weight:500;color:#e8ecf4;text-shadow:0 2px 14px rgba(8,17,31,.9)}
+.beat .links{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:26px}
+.beat .link{color:var(--gold2);text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.b1{bottom:14vh}.b2{top:22vh}.b3{bottom:16vh}.b4{top:32vh}
+.b2,.b3{text-align:center}
+.scroll{position:absolute;left:50%;bottom:22px;z-index:2;transform:translateX(-50%);font-size:11px;letter-spacing:.2em;color:#c9d0de;display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .4s}
+.scroll i{width:1px;height:34px;background:linear-gradient(var(--gold2),transparent);animation:drop 1.8s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.meter{position:absolute;z-index:2;right:20px;top:50%;width:2px;height:120px;margin-top:-60px;background:rgba(255,255,255,.15);border-radius:2px}
+.meter i{display:block;width:100%;height:0;background:var(--gold2);border-radius:2px}
+@media(max-width:699px){.film{height:420vh}.meter{display:none}.b1{bottom:12vh}}
+
+/* 浮かび上がる時、手前に起き上がる */
+.rv{transform:perspective(1200px) translateY(40px) rotateX(16deg);transform-origin:50% 0}
+
+/* カードを手で傾けられる立体に */
+.track{perspective:1400px}
+.tilt{transform-style:preserve-3d;will-change:transform;position:relative}
+.tilt h3,.tilt .big,.tilt .res,.tilt .v{transform:translateZ(36px)}
+.tilt .eyebrow,.tilt .calc{transform:translateZ(18px)}
+.tilt .glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.35),rgba(255,255,255,0) 55%);mix-blend-mode:soft-light}
+.tilt:hover .glare{opacity:1}
+.card,.pane,.one .main,.one .mini,.value{box-shadow:0 1px 2px rgba(18,33,63,.06),0 12px 28px rgba(18,33,63,.08),0 30px 60px -20px rgba(18,33,63,.18)}
+.card.navy,.pane.navy{box-shadow:0 12px 28px rgba(18,33,63,.25),0 34px 70px -18px rgba(18,33,63,.45)}
+
+/* 業務アイコンを立体のボタンに */
+.ic .c{background:linear-gradient(145deg,#ffffff,#e6e8ee);box-shadow:6px 6px 14px rgba(18,33,63,.14),-6px -6px 14px rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.6)}
+.ic:hover .c{transform:translateY(-4px) rotateX(18deg);box-shadow:6px 14px 20px rgba(18,33,63,.18),-6px -6px 14px rgba(255,255,255,.9)}
+
+/* 診断の箱：奥に光の層 */
+.diag{background:radial-gradient(90% 120% at 85% 0%,#22386a 0%,#12213f 55%,#0c1830 100%);box-shadow:0 30px 70px -20px rgba(18,33,63,.55)}
+.diag:before{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(217,191,134,.0),rgba(217,191,134,.35),rgba(217,191,134,0) 40%);filter:blur(6px);animation:spin 14s linear infinite;pointer-events:none}
+.diag>*{position:relative}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* 最後の大見出しを押し出し文字に */
+.final h2{color:var(--navy);text-shadow:0 1px 0 #c9cfdb,0 2px 0 #bcc3d2,0 3px 0 #aeb6c7,0 4px 0 #a1aabd,0 5px 0 #949eb3,0 18px 26px rgba(18,33,63,.25)}
+.btn{box-shadow:0 4px 0 rgba(0,0,0,.18),0 10px 20px rgba(18,33,63,.18);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(0,0,0,.18),0 16px 28px rgba(18,33,63,.22)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18),0 4px 10px rgba(18,33,63,.18)}
+
+@media (prefers-reduced-motion: reduce){.rv{transform:none}.tilt h3,.tilt .big,.tilt .res,.tilt .v,.tilt .eyebrow,.tilt .calc{transform:none}.diag:before,.scroll i{animation:none}}
+
+/* 引継ぎ後の仕上げ：演出より操作と読みやすさを優先する */
+:root{--header-height:52px}
+:focus-visible{outline:3px solid #b08d4a;outline-offset:5px}
+.stage{top:var(--header-height);height:calc(100svh - var(--header-height));background:#08111f url('frames/f000.jpg?v=2') center/cover no-repeat}
+.b1{opacity:1}
+/* 明るい街でも文字が読めるように、文字の後ろだけ暗くぼかす */
+.beat .say{display:inline-block;padding:16px 30px;border-radius:22px;background:rgba(8,17,31,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 40px rgba(8,17,31,.35)}
+.beat h1,.beat .lead{text-shadow:0 2px 0 rgba(0,0,0,.3),0 4px 28px rgba(8,17,31,.9),0 0 60px rgba(8,17,31,.7)}
+.film-controls{position:absolute;z-index:3;top:20px;right:24px;display:flex;gap:10px;align-items:center}
+.film-controls a,.film-controls button{padding:10px 14px;border:1px solid #ffffff50;border-radius:999px;background:#08111fbf;color:#fff;font-size:12px;min-height:44px}
+.beat[aria-hidden="true"]{visibility:hidden}
+.beat .btn{max-width:100%;text-align:center;justify-content:center}
+.rv{opacity:1;transform:none}
+.reveal-ready .rv:not(.in){opacity:0;transform:perspective(1200px) translateY(40px) rotateX(16deg)}
+.one>*,.value>*{min-width:0}
+.fab{width:auto;height:48px;padding:0 16px;gap:10px;display:flex;border-radius:999px;bottom:calc(16px + env(safe-area-inset-bottom));right:16px}
+.fab .tip{position:static;opacity:1;transform:none;background:none;color:#fff;padding:0;box-shadow:none;font-size:12px}
+.fab svg{width:25px;height:25px}
+.film.is-static{height:auto}
+.film.is-static .stage{position:relative;top:0;height:auto;min-height:calc(100svh - var(--header-height));display:flex;flex-direction:column;justify-content:center;gap:40px;padding:100px 0 110px}
+.film.is-static #filmCv,.film.is-static .b2,.film.is-static .b3,.film.is-static .scroll,.film.is-static .meter{display:none}
+.film.is-static .b1,.film.is-static .b4{position:relative;top:auto;bottom:auto;width:100%;opacity:1!important;transform:none!important;visibility:visible;pointer-events:auto}
+.film.is-static .b1 h1{font-size:clamp(42px,8vw,88px)}
+.film.is-static .stage:after{background:#08111f80}
+.motion-reduced .rv,.motion-reduced.reveal-ready .rv:not(.in){opacity:1;transform:none;transition:none}
+.motion-reduced .diag:before,.motion-reduced .scroll i{animation:none}
+.motion-reduced .result.show{animation:none}
+.motion-reduced .tilt,.motion-reduced .tilt>*{transform:none!important;transition:none!important}
+.motion-reduced{scroll-behavior:auto}
+@media(max-width:699px){
+  .film-controls{top:14px;right:16px;left:16px;justify-content:space-between}
+  .beat{padding:0 20px}.b4{top:26%}.b3{bottom:24%}
+  .beat .lead{font-size:clamp(22px,6.4vw,34px)}
+  .beat .links{gap:18px}.beat .btn{font-size:14px;padding:14px 20px}
+  .fab{height:46px;padding:0 13px}.fab .tip{font-size:11px}
+  .cost{font-size:13px}.cost td b{font-size:15px}.cost td:first-child{white-space:normal}
+}
 </style>
+<noscript><style>.film{height:auto}.stage{position:relative;top:0;height:auto;min-height:90svh;padding:110px 0}.beat{display:none}.beat.b1,.beat.b4{display:block;position:relative;top:auto;bottom:auto;opacity:1;margin-bottom:32px;pointer-events:auto}.film-controls,.scroll,.meter,#filmCv,#startBtn{display:none}</style></noscript>
 </head>
 <body>
 
@@ -220,16 +310,25 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 <main id="top">
 
 <!-- 1 1画面目 -->
-<section class="hero">
-  <div class="wrap">
-    <h1 class="rv">自社専門AI<small>全国の会社に、職場からオンラインで。御社専門のAI導入を支援します。</small></h1>
-    <div class="side rv">
-      <p class="lead">毎日奪われている時間を、<br>取り戻す。</p>
+<section class="film" id="film">
+  <div class="stage">
+    <div class="film-controls"><a href="#diag">診断へスキップ ↓</a><button id="motionBtn" type="button" aria-pressed="false">動きを止める</button></div>
+    <canvas id="filmCv" aria-hidden="true"></canvas>
+    <div class="beat b1" data-in="0" data-out=".2">
+      <h1>自社専門AI<small>全国の会社に、職場からオンラインで。御社専門のAI導入を支援します。</small></h1>
+    </div>
+    <div class="beat b2" data-in=".26" data-out=".44"><p class="say">夜9時。<br>まだ、灯りが消えない。</p></div>
+    <div class="beat b3" data-in=".52" data-out=".72"><p class="say">返信、見積、追客。<br><span>社長の手が、雑務で埋まっていく。</span></p></div>
+    <div class="beat b4" data-in=".8" data-out="9">
+      <p class="lead">人を雇わずに、<br>御社を知り尽くした右腕を。</p>
+      <p class="sub">浮いた人件費と時間で、次の一手を打てる会社へ。</p>
       <div class="links">
-        <a class="link" href="#diag">3分で、失っている時間を診断する ›</a>
-        <a class="link lineLink" href="#">公式LINEで相談する ›</a>
+        <a class="btn" href="#diag">3分で、失っている時間を診断する →</a>
+        <a class="link lineLink" href="https://line.me/R/ti/p/%40543rhryb">公式LINEで相談する ›</a>
       </div>
     </div>
+    <div class="scroll" aria-hidden="true">SCROLL<i></i></div>
+    <div class="meter" aria-hidden="true"><i id="meter"></i></div>
   </div>
 </section>
 
@@ -364,7 +463,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       <article class="card navy rv"><span class="eyebrow">教材は初日からすべて公開</span><h3>1週間の案内で、<br>最初の仕事まで。</h3><p>準備から比較、実践、情報更新まで順番にご案内。無料体験では、入力した時点の情報をAIに渡して試します。状況が変わった時の手動更新例も付いています。</p><div class="big">7<small>日間の案内</small></div><div class="calc">読むだけで終わらず、御社の1業務で試す</div></article>
     </div>
   </div>
-  <div class="wrap" style="padding-bottom:56px"><a class="btn navy lineLink" href="#">公式LINEでAI参謀キットを受け取る →</a></div>
+  <div class="wrap" style="padding-bottom:56px"><a class="btn navy lineLink" href="https://line.me/R/ti/p/%40543rhryb">公式LINEでAI参謀キットを受け取る →</a></div>
 </section>
 
 <!-- 7 1対1 -->
@@ -380,7 +479,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
           <li>いちばん時間を取られている業務を、一緒に計算する<span>件数と1件の時間から、月と年の金額をその場で出します</span></li>
           <li>「いまのやり方」「自分で設定したAI」「御社専門のAI」を、目の前で見比べる<span>御社に実際に届いた文面3つ（よくあるもの・情報が足りないもの・例外）で試します</span></li>
         </ol>
-        <a class="btn navy lineLink" href="#">公式LINEで申し込む →</a>
+        <a class="btn navy lineLink" href="https://line.me/R/ti/p/%40543rhryb">公式LINEで申し込む →</a>
       </div>
       <div class="side">
         <div class="mini rv"><h4>契約は必須ではありません。</h4><p>見るだけでも大丈夫です。ご希望があれば、導入をご案内します。進めるかどうかは、数字を見てから決めてください。</p></div>
@@ -481,7 +580,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   </div>
 </footer>
 
-<a class="fab lineLink" href="#" aria-label="公式LINEで相談する"><span class="tip">公式LINEで相談する</span><svg viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8.1-6C21.3 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></a>
+<a class="fab lineLink" href="https://line.me/R/ti/p/%40543rhryb" aria-label="公式LINEで相談する"><span class="tip">公式LINEで相談する</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8.1-6C21.3 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></a>
 
 <script>
 /* ===== 設定（ここだけ書き換える） ===== */
@@ -521,8 +620,9 @@ const Q = [
 ];
 
 const $ = s => document.getElementById(s);
-const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const A = {}; let i = 0;
+const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
+let reduce = motionPreference.matches;
+const A = {}; let i = 0, advanceTimer = 0;
 
 /* LINEのリンク */
 const lineAdd = `https://line.me/R/ti/p/${encodeURIComponent(LINE_BASIC_ID)}`;
@@ -532,6 +632,7 @@ document.querySelectorAll(".lineLink").forEach(a => { a.href = lineAdd; a.target
 
 /* 診断 */
 function render() {
+  clearTimeout(advanceTimer);
   const q = Q[i];
   $("bar").style.width = `${(i / Q.length) * 100}%`;
   $("qcount").textContent = `Q${i + 1} ／ ${Q.length}`;
@@ -544,17 +645,22 @@ function render() {
     b.className = "opt"; b.type = "button"; b.textContent = label;
     const cur = A[q.id];
     if (q.multi ? (cur || []).includes(label) : cur === (q.hours ? HOUR_OPTS[idx].v : label)) b.classList.add("on");
+    b.setAttribute("aria-pressed", b.classList.contains("on"));
     b.onclick = () => {
       if (q.multi) {
         const s = new Set(A[q.id] || []);
         s.has(label) ? s.delete(label) : s.add(label);
         A[q.id] = [...s]; b.classList.toggle("on");
+        b.setAttribute("aria-pressed", s.has(label));
         $("nextBtn").disabled = !A[q.id].length;
       } else {
         A[q.id] = q.hours ? HOUR_OPTS[idx].v : label;
-        [...box.children].forEach(c => c.classList.remove("on"));
+        [...box.children].forEach(c => { c.classList.remove("on"); c.setAttribute("aria-pressed", "false"); });
         b.classList.add("on"); $("nextBtn").disabled = false;
-        setTimeout(next, 220);
+        b.setAttribute("aria-pressed", "true");
+        clearTimeout(advanceTimer);
+        const questionIndex = i;
+        advanceTimer = setTimeout(() => { if (i === questionIndex) next(); }, 220);
       }
     };
     box.appendChild(b);
@@ -563,8 +669,15 @@ function render() {
   const answered = q.multi ? (A[q.id] || []).length > 0 : A[q.id] !== undefined;
   $("nextBtn").disabled = !answered;
   $("nextBtn").textContent = (i === Q.length - 1 ? "結果を見る" : "次へ") + " →";
+  $("qtitle").tabIndex = -1;
+  $("qtitle").focus({preventScroll:true});
 }
-function next() { if (i < Q.length - 1) { i++; render(); } else showResult(); }
+function next() {
+  clearTimeout(advanceTimer);
+  const q = Q[i];
+  if (q.multi ? !(A[q.id] || []).length : A[q.id] === undefined) return;
+  if (i < Q.length - 1) { i++; render(); } else showResult();
+}
 
 function countUp(el, to, dec = 0) {
   if (reduce) { el.textContent = to.toLocaleString(undefined, { maximumFractionDigits: dec }); return; }
@@ -627,9 +740,11 @@ $("startBtn").onclick = () => { $("start").hidden = true; $("quiz").hidden = fal
 $("nextBtn").onclick = next;
 $("backBtn").onclick = () => { if (i > 0) { i--; render(); } };
 $("retryBtn").onclick = () => {
+  clearTimeout(advanceTimer);
   Object.keys(A).forEach(k => delete A[k]); i = 0;
+  $("valLabel").textContent = "1業務で、月20時間が戻った場合（試算）"; setValue(20);
   $("result").classList.remove("show"); $("quiz").hidden = false; render();
-  $("diagBox").scrollIntoView({ behavior: "smooth", block: "start" });
+  $("diagBox").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
 };
 document.querySelectorAll(".ic").forEach(a => a.addEventListener("click", () => {
   if (!$("start").hidden) setTimeout(() => $("startBtn").click(), 500);
@@ -640,7 +755,7 @@ document.querySelectorAll(".shelf").forEach(sh => {
   const tr = sh.querySelector(".track");
   sh.querySelectorAll(".arrows button").forEach(b => b.onclick = () => {
     const card = tr.querySelector(".card");
-    tr.scrollBy({ left: (card.offsetWidth + 18) * +b.dataset.dir, behavior: "smooth" });
+    tr.scrollBy({ left: (card.offsetWidth + 18) * +b.dataset.dir, behavior: reduce ? "auto" : "smooth" });
   });
 });
 
@@ -668,10 +783,145 @@ vsObs.observe(document.querySelector(".vs"));
 
 /* 下に送ると浮かび上がる */
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+document.documentElement.classList.add("reveal-ready");
 document.querySelectorAll(".rv").forEach(el => io.observe(el));
 
 /* LINEボタンを一度だけ目立たせる */
 setTimeout(() => { const f = document.querySelector(".fab"); f.classList.add("hint"); setTimeout(() => f.classList.remove("hint"), 3500); }, 6000);
+
+/* ===== 3D：カードを傾ける（マウスのある端末だけ） ===== */
+if (!reduce && matchMedia("(hover: hover)").matches) {
+  document.querySelectorAll(".card,.pane,.one .main,.one .mini,.value").forEach(el => {
+    el.classList.add("tilt");
+    const g = document.createElement("span"); g.className = "glare"; el.appendChild(g);
+    el.addEventListener("pointermove", e => {
+      if (reduce) return;
+      if (el.classList.contains("rv") && !el.classList.contains("in")) return;
+      const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      el.style.transition = "transform .12s ease-out";
+      el.style.transform = `perspective(1000px) rotateX(${(.5 - y) * 10}deg) rotateY(${(x - .5) * 12}deg) translateZ(8px)`;
+      el.style.setProperty("--gx", x * 100 + "%"); el.style.setProperty("--gy", y * 100 + "%");
+    });
+    el.addEventListener("pointerleave", () => { el.style.transition = "transform .6s cubic-bezier(.2,.8,.2,1)"; el.style.transform = ""; });
+  });
+}
+
+/* ===== 1画面目：スクロールに合わせて映像をコマ送りする ===== */
+(function () {
+  const FRAMES = 120, src = k => `frames/f${String(k).padStart(3, "0")}.jpg?v=2`   // 画像を作り直したら v の数字を上げる（古い画像のキャッシュを避ける）;
+  const film = $("film"), stage = film.querySelector(".stage"), cv = $("filmCv"), ctx = cv.getContext("2d");
+  const beats = [...film.querySelectorAll(".beat")];
+  const imgs = new Map(), pending = new Set(), failed = new Set();
+  const CACHE_LIMIT = 20, CONCURRENCY = 4;
+  let queue = [];
+  let cur = -1, want = 0;
+
+  // 必要なコマの近くから4枚ずつ読み、保持は20枚までにする。
+  function pump() {
+    if (reduce) return;
+    while (pending.size < CONCURRENCY && queue.length) {
+      const k = queue.shift();
+      if (imgs.has(k) || pending.has(k) || failed.has(k)) continue;
+      pending.add(k);
+      const im = new Image(); im.decoding = "async";
+      im.onload = () => {
+        pending.delete(k);
+        if (!reduce) {
+          imgs.set(k, im);
+          while (imgs.size > CACHE_LIMIT) {
+            const farthest = [...imgs.keys()].sort((a,b) => Math.abs(b-want)-Math.abs(a-want))[0];
+            imgs.delete(farthest);
+          }
+          draw(true);
+        }
+        pump();
+      };
+      im.onerror = () => { pending.delete(k); failed.add(k); pump(); };
+      im.src = src(k);
+    }
+  }
+  function requestFrames() {
+    queue = [0, 1, 2, 3, 4, 5, -1, 6, -2, 7, -3, 8].map(d => want + d)   // 進む向き（下）を多めに
+      .filter(k => k >= 0 && k < FRAMES && !imgs.has(k) && !pending.has(k) && !failed.has(k));
+    pump();
+  }
+
+  function size() {
+    const r = Math.min(devicePixelRatio || 1, 1.5);
+    cv.width = cv.clientWidth * r; cv.height = cv.clientHeight * r; draw(true);
+  }
+  // 画面いっぱいに切り抜いて描く（cover）
+  function draw(force) {
+    if (reduce || !ctx || !imgs.size) return;
+    const k = [...imgs.keys()].sort((a,b) => Math.abs(a-want)-Math.abs(b-want))[0];
+    const im = imgs.get(k);
+    if (!im || (k === cur && !force)) return;
+    cur = k;
+    const s = Math.max(cv.width / im.width, cv.height / im.height);
+    const w = im.width * s, h = im.height * s;
+    ctx.drawImage(im, (cv.width - w) / 2, (cv.height - h) / 2, w, h);
+  }
+
+  const fade = (p, a, b) => {            // a〜b の間だけ見える（前後 .05 でふわっと）
+    const e = .05;
+    return Math.max(0, Math.min(1, (p - a) / e + (a === 0 ? 1 : 0), (b - p) / e));
+  };
+  function tick() {
+    if (reduce) return;
+    const r = film.getBoundingClientRect();
+    const header = document.querySelector(".hdr").offsetHeight;
+    const p = Math.min(1, Math.max(0, (header-r.top) / Math.max(1,r.height-stage.clientHeight)));
+    const nextFrame = Math.round(p * (FRAMES - 1));
+    if (nextFrame !== want || !imgs.size) { want = nextFrame; requestFrames(); }
+    draw();
+    beats.forEach(el => {
+      const o = fade(p, +el.dataset.in, +el.dataset.out);
+      el.style.opacity = o;
+      el.style.transform = reduce ? "" : `translate3d(0,${(1 - o) * 24}px,0) scale(${.97 + o * .03})`;
+      el.classList.toggle("on", o > .5);
+      el.inert = o <= .05;
+      el.setAttribute("aria-hidden", o <= .05 ? "true" : "false");
+    });
+    $("meter").style.height = p * 100 + "%";
+    film.querySelector(".scroll").style.opacity = p > .03 ? 0 : 1;
+  }
+  let raf = 0;
+  addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; tick(); }); }, { passive: true });
+  addEventListener("resize", () => { size(); tick(); });
+  function setMotion(stopped) {
+    reduce = stopped || !ctx;
+    document.documentElement.classList.toggle("motion-reduced", reduce);
+    film.classList.toggle("is-static", reduce);
+    $("motionBtn").setAttribute("aria-pressed", String(reduce));
+    $("motionBtn").textContent = reduce ? "動きを再生する" : "動きを止める";
+    if (reduce) {
+      queue = []; imgs.clear(); cur = -1;
+      beats.forEach(el => {
+        const visible = el.classList.contains("b1") || el.classList.contains("b4");
+        el.inert = !visible; el.setAttribute("aria-hidden", String(!visible));
+      });
+    } else { size(); requestFrames(); tick(); }
+  }
+  $("motionBtn").onclick = () => {
+    setMotion(!reduce);
+    window.scrollTo({top:film.getBoundingClientRect().top + scrollY - document.querySelector(".hdr").offsetHeight,behavior:"instant"});
+  };
+  motionPreference.addEventListener("change", e => setMotion(e.matches));
+  setMotion(reduce);
+
+  // ページを読み終えたら、残りのコマを2枚ずつブラウザのキャッシュへ先読みする（速くスクロールしても映像が遅れないように）。
+  // 画像として持つのは上の20枚だけなので、メモリは増えない。データ節約モードと「動きを止める」の時は読まない。
+  addEventListener("load", () => {
+    if (reduce || (navigator.connection && navigator.connection.saveData)) return;
+    let n = 0;
+    const one = () => {
+      if (reduce || n >= FRAMES) return;
+      const k = n++;
+      fetch(src(k), { priority: "low" }).catch(() => {}).finally(one);
+    };
+    one(); one();
+  });
+})();
 </script>
 </body>
 </html>
