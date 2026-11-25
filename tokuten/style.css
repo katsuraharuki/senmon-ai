@@ -13,14 +13,18 @@ a{color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:3px
 .nav a{font-size:13px;text-decoration:none;color:var(--sub);padding:6px 12px;white-space:nowrap;border-bottom:2px solid transparent}
 .nav a.on{color:var(--ink);border-bottom-color:var(--accent)}
 .nav a:hover{color:var(--ink)}
-/* 表紙：白地に大きな明朝 */
-.hero{border-bottom:1px solid var(--line)}
-.hero .in{max-width:1160px;margin:0 auto;padding:84px 20px 64px}
-.kicker{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--sub);margin-bottom:22px}
+/* 表紙：写真の上に墨のグラデと白い明朝（v3・没入感） */
+.hero{position:relative;overflow:hidden;background:#141311 url(img/hero.jpg) center right/cover no-repeat;color:#fff;isolation:isolate}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,13,11,.88) 0%,rgba(14,13,11,.72) 38%,rgba(14,13,11,.25) 72%,rgba(14,13,11,.1) 100%),linear-gradient(0deg,rgba(14,13,11,.55),rgba(14,13,11,0) 40%)}
+.hero .in{max-width:1160px;margin:0 auto;padding:120px 20px 96px;animation:rise 1s ease-out both}
+.hero.big .in{min-height:min(78vh,760px);display:flex;flex-direction:column;justify-content:center}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.78);margin-bottom:22px;letter-spacing:.08em}
 .kicker:before{content:"";width:28px;height:2px;background:var(--accent)}
-.hero h1{font-size:clamp(30px,5.4vw,54px);line-height:1.4;margin:0 0 22px;color:var(--ink)}
-.hero p{color:var(--sub);max-width:640px;margin:0;font-size:17px}
-.note{font-size:12px!important;color:var(--mute)!important;margin-top:24px!important}
+.hero h1{font-size:clamp(30px,5.4vw,58px);line-height:1.4;margin:0 0 22px;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero p{color:rgba(255,255,255,.86);max-width:620px;margin:0;font-size:17px}
+.note{font-size:12px!important;color:rgba(255,255,255,.6)!important;margin-top:24px!important}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hero .in{animation:none}}
 /* 本文と目次 */
 .wrap{max-width:1160px;margin:0 auto;padding:56px 20px 96px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:64px}
 .toc{position:sticky;top:78px;align-self:start;max-height:calc(100vh - 100px);overflow:auto;font-size:13px}
@@ -82,11 +86,13 @@ h2.sec:first-child{margin-top:0}
 .card p{font-size:14px;color:var(--sub);margin:0 0 22px;flex:1}
 .card .go{font-size:14px;font-weight:700}
 .card .go:after{content:" →";color:var(--accent)}
-.lecture{max-width:1160px;margin:0 auto;padding:16px 20px 40px}
-.lecture .box{background:var(--paper);border-radius:16px;padding:28px;display:flex;gap:22px;align-items:center}
-.lecture .play{flex:none;width:60px;height:60px;border-radius:50%;border:1px solid var(--ink);display:grid;place-items:center}
-.lecture .play:after{content:"";border-left:14px solid var(--accent);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
-.lecture h2{margin:0 0 4px;font-size:19px}.lecture p{margin:0;font-size:14px;color:var(--sub)}
+.lecture{max-width:1160px;margin:0 auto;padding:24px 20px 48px}
+.lecture .box{position:relative;overflow:hidden;isolation:isolate;border-radius:18px;min-height:360px;padding:48px;display:flex;gap:28px;align-items:center;color:#fff;background:#0f0e0d url(img/lecture.jpg) center right/cover no-repeat}
+.lecture .box:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(12,11,10,.9) 0%,rgba(12,11,10,.7) 45%,rgba(12,11,10,.15) 100%)}
+.lecture .play{flex:none;width:76px;height:76px;border-radius:50%;border:1px solid rgba(255,255,255,.7);display:grid;place-items:center;background:rgba(255,255,255,.06);backdrop-filter:blur(4px)}
+.lecture .play:after{content:"";border-left:18px solid var(--accent);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+.lecture .lk{font-size:12px;letter-spacing:.12em;color:rgba(255,255,255,.7);margin:0 0 8px}
+.lecture h2{margin:0 0 10px;font-size:clamp(22px,3vw,30px);line-height:1.5;color:#fff}.lecture p{margin:0;font-size:15px;color:rgba(255,255,255,.82);max-width:520px}
 .how{max-width:1160px;margin:0 auto;padding:32px 20px 100px}
 .how ol{counter-reset:s;list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .how li{counter-increment:s;font-size:14px;color:var(--sub)}
@@ -95,6 +101,6 @@ h2.sec:first-child{margin-top:0}
 footer{border-top:1px solid var(--line);color:var(--mute);font-size:12px;text-align:center;padding:28px 20px 40px}
 .pager{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);margin-top:64px;padding-top:24px}
 .pager a{text-decoration:none;font-size:14px;font-weight:700}
-@media (max-width:900px){.wrap{grid-template-columns:1fr;gap:28px;padding-top:32px}.toc{position:static;max-height:none;background:var(--paper);padding:16px 18px;border-radius:12px}.cards,.how ol{grid-template-columns:1fr}.card{border-right:0}.hero .in{padding:56px 20px 44px}}
-@media (max-width:560px){.step{padding-left:0}.step:before{position:static;display:inline-grid;margin-bottom:8px}.step:after{display:none}.first{padding:24px 18px 6px}.lecture .box{flex-direction:column;align-items:flex-start}body{font-size:15px}.hero p{font-size:15px}}
-@media print{.top,.toc,.copy,.printbtn,footer,.pager{display:none!important}.wrap{display:block;padding:0}.hero .in{padding:0 0 16px}body{font-size:12px}.blank{min-height:60px}}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;gap:28px;padding-top:32px}.toc{position:static;max-height:none;background:var(--paper);padding:16px 18px;border-radius:12px}.cards,.how ol{grid-template-columns:1fr}.card{border-right:0}.hero .in{padding:72px 20px 56px}.hero{background-position:70% center}.hero:before{background:linear-gradient(0deg,rgba(14,13,11,.9) 0%,rgba(14,13,11,.7) 55%,rgba(14,13,11,.45) 100%)}.lecture .box{padding:32px 24px;min-height:300px;background-position:75% center}.lecture .box:before{background:linear-gradient(0deg,rgba(12,11,10,.92),rgba(12,11,10,.55))}}
+@media (max-width:560px){.step{padding-left:0}.step:before{position:static;display:inline-grid;margin-bottom:8px}.step:after{display:none}.first{padding:24px 18px 6px}.lecture .box{flex-direction:column;align-items:flex-start}body{font-size:15px}.hero p{font-size:15px}.hero h1{font-size:25px}.hero.big .in{min-height:auto}}
+@media print{.top,.toc,.copy,.printbtn,footer,.pager{display:none!important}.wrap{display:block;padding:0}.hero{background:none;color:var(--ink)}.hero:before{display:none}.hero h1{color:var(--ink);text-shadow:none}.hero p,.kicker,.note{color:var(--sub)!important}.hero .in{padding:0 0 16px;animation:none}body{font-size:12px}.blank{min-height:60px}}
